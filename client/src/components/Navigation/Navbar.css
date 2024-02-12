@@ -1,0 +1,9 @@
+nav {
+    height: 55px;
+    padding: 0.2em;
+    background-color: rgb(173, 117, 65);
+}
+
+.navbar-logo img {
+    height: 100%;
+}
