@@ -5,6 +5,10 @@ nav {
     background-color: rgb(0, 0, 0);
 }
 
+#menu-arrow {
+    width: 20px;
+}
+
 .navbar-logo img {
     height: 100%;
 }
