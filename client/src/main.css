@@ -41,7 +41,9 @@ textarea {
 
 :root {
     --primary: rgb(53, 27, 68);
+    --secondary: rgb(237,155,66);
     --linear: linear-gradient(120deg, rgba(74,31,89,1) 0%, rgba(237,155,66,1) 100%);
+    --dark: black;
 }
 
 html, body {

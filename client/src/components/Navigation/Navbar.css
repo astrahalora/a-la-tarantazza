@@ -1,6 +1,5 @@
-nav {
+/* nav {
     height: 66px;
-    /* background-color: rgb(173, 117, 65); */
     background-color: rgb(0, 0, 0);
     display: flex;
     justify-content: space-between;
@@ -17,6 +16,12 @@ nav ul li {
     justify-content: center;
     display: flex;
     align-items: center;
+} */
+
+nav {
+    height: 66px;
+    background-color: var(--dark);
+    color: var(--secondary);
 }
 
 #hamburger-menu {
