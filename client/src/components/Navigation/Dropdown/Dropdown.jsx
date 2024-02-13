@@ -11,21 +11,24 @@ export default function Dropdown () {
     const handleOpenMenu = () => setIsOpen(prev => !prev);
 
     return (
-        <div>
-            <h3>Dropdown</h3>
+        <div className="dropdown-container">
             <ul onClick={handleOpenMenu}
-            className={isOpen ? "dropdown-menu clicked" : "dropdown-menu"}>
+                className={isOpen ? "dropdown-menu clicked" : "dropdown-menu"}>
                 <li>
-                    <NavLink to="/pizza" onClick={() => setIsOpen(false)}>Pizza</NavLink>
+                    <NavLink to="/pizza" 
+                             onClick={() => setIsOpen(false)} 
+                             className="dropdown-link">
+                    Pizza
+                    </NavLink>
                 </li>
                 <li>
-                    <NavLink to="/desserts" onClick={() => setIsOpen(false)}>Desserts</NavLink>
+                    <NavLink to="/desserts" onClick={() => setIsOpen(false)} className="dropdown-link">Desserts</NavLink>
                 </li>
                 <li>
-                    <NavLink to="/salads" onClick={() => setIsOpen(false)}>Salads</NavLink>
+                    <NavLink to="/salads" onClick={() => setIsOpen(false)} className="dropdown-link">Salads</NavLink>
                 </li>
                 <li>
-                    <NavLink to="/drinks" onClick={() => setIsOpen(false)}>Drinks</NavLink>
+                    <NavLink to="/drinks" onClick={() => setIsOpen(false)} className="dropdown-link">Drinks</NavLink>
                 </li>
             </ul>
         </div>

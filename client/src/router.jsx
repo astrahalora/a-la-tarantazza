@@ -9,6 +9,7 @@ import Drinks from "./pages/Menu/Drinks/Drinks";
 import Client from "./pages/Client/Client";
 import Admin from "./pages/Admin/Admin";
 import Cart from "./pages/Cart/Cart";
+import Menu from "./pages/Menu/Menu";
 
 export const router = createBrowserRouter([
     {
@@ -23,6 +24,10 @@ export const router = createBrowserRouter([
             {
                 path: "/pizza",
                 element: <Pizza />
+            },
+            {
+                path: "/menu",
+                element: <Menu />
             },
             {
                 path: "/desserts",

@@ -10,7 +10,7 @@ import Dropdown from "./Dropdown/Dropdown";
 
 export default function Navbar() {
     const navigate = useNavigate();
-    // const { width } = useWindowDimensions();
+    const { width } = useWindowDimensions();
 
     // const wideNav = ``;
     // const hamburgerNav = ``;
@@ -19,6 +19,21 @@ export default function Navbar() {
 
     const handleOpenMenu = () => setIsOpen(prev => !prev);
     const closeMobileMenu = () => setIsOpen(false);
+    const onMouseEnter = () => {
+        if(width < 960) {
+            setDropdown(false);
+        } else {
+            setDropdown(true);
+        }
+    }
+
+    const onMouseLeave = () => {
+        if(width < 960) {
+            setDropdown(false);
+        } else {
+            setDropdown(false);
+        }
+    }
 
     return (
         <>
@@ -41,13 +56,15 @@ export default function Navbar() {
                     <img src={tazzaLogo} alt="A La Tarantazza Logo"/>
                 </NavLink>
                 <div className="menu-icon" onClick={handleOpenMenu}>
-                    <img src={isOpen ? menu : close} alt="Open or Close" id="hamburger-menu"/>
+                    <img src={isOpen ? close : menu} alt="Open or Close" id="hamburger-menu"/>
                 </div>
                 <ul className={isOpen ? "nav-menu active" : "nav-menu"}>
                     <li className="nav-item">
                         <NavLink to="/" className="nav-links" onClick={closeMobileMenu}>About</NavLink>
                     </li>
-                    <li className="nav-item">
+                    <li className="nav-item"
+                        onMouseEnter={onMouseEnter}
+                        onMouseLeave={onMouseLeave}>
                         <NavLink to="/menu" className="nav-links" onClick={closeMobileMenu}>
                             Menu <img src={arrowDown} alt="Arrow Down" id="menu-arrow"/>
                         </NavLink>
