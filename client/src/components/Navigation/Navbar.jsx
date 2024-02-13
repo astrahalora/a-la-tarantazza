@@ -41,8 +41,7 @@ export default function Navbar() {
                     <img src={tazzaLogo} alt="A La Tarantazza Logo"/>
                 </NavLink>
                 <div className="menu-icon" onClick={handleOpenMenu}>
-                    <img src={isOpen ? menu : close} alt="Open or Close" />
-
+                    <img src={isOpen ? menu : close} alt="Open or Close" id="hamburger-menu"/>
                 </div>
                 <ul className={isOpen ? "nav-menu active" : "nav-menu"}>
                     <li className="nav-item">

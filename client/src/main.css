@@ -39,9 +39,14 @@ textarea {
     resize: none;
 }
 
+:root {
+    --primary: rgb(53, 27, 68);
+    --linear: linear-gradient(120deg, rgba(74,31,89,1) 0%, rgba(237,155,66,1) 100%);
+}
+
 html, body {
-    background: rgb(53, 27, 68);
-    background: linear-gradient(120deg, rgba(74,31,89,1) 0%, rgba(237,155,66,1) 100%);
+    background: var(--primary);
+    background: var(--linear);
     background-repeat: no-repeat;
     background-size: cover;
     width: 100%;
