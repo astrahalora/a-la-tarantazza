@@ -1,5 +1,6 @@
 .dropdown-container {
     position: relative;
+    z-index: 2;
 }
 
 .dropdown-menu {
@@ -13,7 +14,6 @@
   
   .dropdown-menu li {
     background: var(--secondary-accent);
-    cursor: pointer;
   }
 
   .dropdown-menu li:first-of-type {
@@ -27,6 +27,7 @@
   .dropdown-menu li:hover:not(:first-of-type) {
     background: var(--primary-accent);
     transition: all 0.3s ease;
+    cursor: pointer;
   }  
   
   .dropdown-menu.clicked {
@@ -39,6 +40,13 @@
     width: 100%;
     color: var(--light);
     padding: 16px;
+  }
+
+  #bottom-bows {
+    position: absolute;
+    height: 50px;
+    top: 317px;
+    left: -165px;
   }
   
   @media screen and (max-width: 960px) {

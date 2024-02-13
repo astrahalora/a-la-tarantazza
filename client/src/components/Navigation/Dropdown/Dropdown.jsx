@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import bow from "../../../img/bow_column_2.png";
+import twoBow from "../../../img/two_bows.png";
 import "./Dropdown.css";
 
 
@@ -44,6 +45,7 @@ export default function Dropdown() {
                     </NavLink>
                 </li>
             </ul>
+            <img src={twoBow} alt="Dropdown Ribbon" id="bottom-bows"/>
         </div>
     )
 }
