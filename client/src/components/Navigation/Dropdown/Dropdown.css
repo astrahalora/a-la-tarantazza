@@ -12,12 +12,16 @@
   }
   
   .dropdown-menu li {
-    background: #1888ff;
+    background: var(--secondary-accent);
     cursor: pointer;
+  }
+
+  .dropdown-menu li:first-of-type {
+    border-top: 2px solid black;
   }
   
   .dropdown-menu li:hover {
-    background: #5cabff;
+    background: var(--primary-accent);
   }
   
   .dropdown-menu.clicked {

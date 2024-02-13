@@ -4,6 +4,7 @@ import tazzaLogo from "../../img/tazza_logo_4.png";
 import menu from "../../img/menu.png";
 import close from "../../img/close.png";
 import arrowDown from "../../img/arrow_down.png";
+import arrowUp from "../../img/arrow_up.png";
 import { useWindowDimensions } from "../../js/useWindowDimensions";
 import "./Navbar.css";
 import Dropdown from "./Dropdown/Dropdown";
@@ -29,13 +30,13 @@ export default function Navbar() {
                 </div>
                 <ul className={isOpen ? "nav-menu active" : "nav-menu"}>
                     <li className="nav-item">
-                        <NavLink to="/" className="nav-links" onClick={closeMobileMenu}>About</NavLink>
+                        <NavLink to="/" className="nav-links" onClick={closeMobileMenu}>
+                            About
+                        </NavLink>
                     </li>
-                    <li className="nav-item"
-                        onMouseEnter={onMouseEnter}
-                        onMouseLeave={onMouseLeave}>
+                    <li className="nav-item" onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
                         <NavLink to="/menu" className="nav-links" onClick={closeMobileMenu}>
-                            Menu <img src={arrowDown} alt="Arrow Down" id="menu-arrow" />
+                            Menu <img src={dropdown ? arrowUp : arrowDown} alt="Arrow Down" id="menu-arrow" />
                         </NavLink>
                         {dropdown && <Dropdown />}
                     </li>
@@ -50,7 +51,9 @@ export default function Navbar() {
                         </NavLink>
                     </li>
                     <li className="nav-item">
-                        <NavLink to="/cart" className="nav-links" onClick={closeMobileMenu}>Cart</NavLink>
+                        <NavLink to="/cart" className="nav-links" onClick={closeMobileMenu}>
+                            Cart
+                        </NavLink>
                     </li>
                 </ul>
             </nav>

@@ -42,6 +42,8 @@ textarea {
 :root {
     --primary: rgb(53, 27, 68);
     --secondary: rgb(192, 145, 95);
+    --primary-accent: rgb(130, 26, 27);
+    --secondary-accent: rgb(27,25,25);
     --linear: linear-gradient(90deg, rgb(28, 27, 27) 0%, rgb(26, 23, 23) 100%);
     --dark: rgb(0, 0, 0);
     --dark-hover: rgb(14, 5, 14);
