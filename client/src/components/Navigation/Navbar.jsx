@@ -1,6 +1,6 @@
 import { Outlet, NavLink, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import tazzaLogo from "../../img/tazza_logo.png";
+import tazzaLogo from "../../img/tazza_logo_4.png";
 import menu from "../../img/menu.png";
 import close from "../../img/close.png";
 import { useWindowDimensions } from "../../js/useWindowDimensions";

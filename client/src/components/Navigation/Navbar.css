@@ -1,7 +1,8 @@
 nav {
-    height: 55px;
-    padding: 0.2em;
-    background-color: rgb(173, 117, 65);
+    height: 66px;
+    padding: 0.4em;
+    /* background-color: rgb(173, 117, 65); */
+    background-color: rgb(0, 0, 0);
 }
 
 .navbar-logo img {
