@@ -26,10 +26,19 @@ app.use(function (req, res, next) {
     next();
 });
 
+const serverErrorHandler = (res, err) => {
+    console.error(err);
+    return res.status(500).json({ message: err.message });
+};
+
 app.route("/products")
     .get(async (req, res) => {
-        const products = await ProductModel.find();
-        return res.json(products);
+        try {
+            const products = await ProductModel.find();
+            return res.json(products);
+        } catch (err) {
+            serverErrorHandler(res, err);
+        }
     });
 
 const main = async () => {
