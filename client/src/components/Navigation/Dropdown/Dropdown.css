@@ -1,6 +1,6 @@
 .dropdown-container {
     position: relative;
-    z-index: 2;
+    z-index: 1;
 }
 
 .dropdown-menu {
@@ -8,7 +8,7 @@
     width: 200px;
     position: absolute;
     top: 40px;
-    right: -40px;
+    right: -50px;
     text-align: center;
   }
   
@@ -46,7 +46,7 @@
     position: absolute;
     height: 50px;
     top: 317px;
-    left: -165px;
+    left: -155px;
   }
   
   @media screen and (max-width: 960px) {

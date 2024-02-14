@@ -5,6 +5,7 @@ import menu from "../../img/menu.png";
 import close from "../../img/close.png";
 import arrowDown from "../../img/arrow_down.png";
 import arrowUp from "../../img/arrow_up.png";
+import cart from "../../img/shopping_cart.png";
 import { useWindowDimensions } from "../../js/useWindowDimensions";
 import "./Navbar.css";
 import Dropdown from "./Dropdown/Dropdown";
@@ -52,7 +53,7 @@ export default function Navbar() {
                     </li>
                     <li className="nav-item">
                         <NavLink to="/cart" className="nav-links" onClick={closeMobileMenu}>
-                            Cart
+                            <img src={cart} alt="Shopping Cart" id="cart-img"/>
                         </NavLink>
                     </li>
                 </ul>
