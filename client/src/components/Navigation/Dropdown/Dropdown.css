@@ -19,6 +19,11 @@
     background: transparent;
   }
 
+  .dropdown-menu li:nth-child(2) {
+    border-top-left-radius: var(--soft-border);
+    border-top-right-radius: var(--soft-border);
+  }
+
   .dropdown-menu li:first-of-type img {
     height: 50px;
   }
