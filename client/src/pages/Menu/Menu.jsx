@@ -1,5 +1,4 @@
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
 import pizza from "../../img/pizza.webp";
 import desserts from "../../img/desserts.webp";
 import salads from "../../img/salads.webp";
@@ -7,12 +6,10 @@ import drinks from "../../img/drinks.webp";
 import "./Menu.css";
 
 export default function Menu() {
-    // const { productList } = useSelector(state => state.products);
     const navigate = useNavigate();
 
     return (
         <div className="main-menu">
-            {/* <h2>{productList === null ? "Null" : "Products"}</h2> */}
             <div className="pizza-info infos" onClick={() => navigate("/pizza")}>
                 <img src={pizza} alt="Pizza" />
                 <div>
