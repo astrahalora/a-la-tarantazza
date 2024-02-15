@@ -53,7 +53,7 @@ export default function Navbar() {
                     </li>
                     <li className="nav-item">
                         <NavLink to="/cart" className="nav-links" onClick={closeMobileMenu}>
-                            <img src={cart} alt="Shopping Cart" id="cart-img"/>
+                            {width < 960 ? "Cart" : <img src={cart} alt="Shopping Cart" id="cart-img"/>}
                         </NavLink>
                     </li>
                 </ul>
