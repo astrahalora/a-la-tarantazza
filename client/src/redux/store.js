@@ -9,6 +9,8 @@ const store = configureStore({
 });
 
 // Dispatch the fetchProducts action to load initial data when the app starts
+// so as to reduce the number of api calls and in this case load products in
+// the background even before the client reaches a page that displays them
 store.dispatch(fetchProducts());
 
 export default store;
