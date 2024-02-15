@@ -1,7 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { useFetch } from "../js/useFetch";
-
-// const { data, isLoading, isError } = useFetch();
 
 export const productsSlice = createSlice({
     name: "products",

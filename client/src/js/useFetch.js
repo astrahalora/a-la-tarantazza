@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { productsUrl } from "./endpoints";
 
 export function useFetch() {
     const [data, setData] = useState();
@@ -12,7 +13,7 @@ export function useFetch() {
 
         const controller = new AbortController();
 
-        fetch("http://localhost:8080/products", { signal: controller.signal })
+        fetch(productsUrl, { signal: controller.signal })
         .then(res => {
             // if unsuccessful status, reject and throw an error
             if(res.status === 200) {

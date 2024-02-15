@@ -4,7 +4,6 @@
 }
 
 .dropdown-menu {
-    background: var(--dark);
     width: 200px;
     position: absolute;
     top: 40px;
@@ -17,7 +16,7 @@
   }
 
   .dropdown-menu li:first-of-type {
-    background: var(--secondary);
+    background: transparent;
   }
 
   .dropdown-menu li:first-of-type img {
