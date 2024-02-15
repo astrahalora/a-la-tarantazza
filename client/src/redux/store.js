@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import productReducer, { fetchProducts } from "./productSlice";
+import productReducer, { fetchProducts } from "./productsSlice";
 
 const store = configureStore({
   reducer: {
@@ -9,6 +9,6 @@ const store = configureStore({
 });
 
 // Dispatch the fetchProducts action to load initial data when the app starts
-// store.dispatch(fetchProducts());
+store.dispatch(fetchProducts());
 
 export default store;
