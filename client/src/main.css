@@ -50,8 +50,10 @@ textarea {
     --light: white;
     --dark: rgb(0, 0, 0);
     --dark-hover: rgb(14, 5, 14);
+    --dark-medium: rgb(32, 28, 32);
     --dark-lightest: rgb(54, 47, 47);
     --soft-border: 5px;
+    --transition: all 0.3s ease;
 }
 
 html, body {

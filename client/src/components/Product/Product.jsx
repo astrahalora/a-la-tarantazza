@@ -8,7 +8,7 @@ export default function Product( { product } ) {
                 <h3>{product[0].name}</h3>
                 <button type="button" className="base-btn details">See Details</button>
                 <div className="product-info">
-                    <p>${product[0].amount > 0 ? product[0].price : "Unavailable"}</p>
+                    <p className="price">${product[0].amount > 0 ? product[0].price : "Unavailable"}</p>
                     <img src={cart} alt="Cart" className="buy-cart"/>
                 </div>
             </div>
