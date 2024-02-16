@@ -42,8 +42,10 @@ textarea {
 :root {
     --primary: rgb(53, 27, 68);
     --secondary: rgb(192, 145, 95);
+    --tertiary: rgb(237,155,66);
     --primary-accent: rgb(130, 26, 27);
     --secondary-accent: rgb(27,25,25);
+    --tertiary-accent: rgb(201, 104, 66);
     --linear: linear-gradient(90deg, rgb(28, 27, 27) 0%, rgb(26, 23, 23) 100%);
     --light: white;
     --dark: rgb(0, 0, 0);
@@ -61,7 +63,16 @@ html, body {
     height: 100%;
 }
 
-/* #root {
-    width: 100%;
-    height: 91.8%;
-} */
+.base-btn {
+    background: var(--tertiary);
+    font-size: 17px;
+    padding: 0.5rem;
+    border-radius: var(--soft-border);
+    color: var(--dark);
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.base-btn:hover {
+    background: var(--tertiary-accent);
+}

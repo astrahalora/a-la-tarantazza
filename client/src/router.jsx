@@ -11,6 +11,7 @@ import Admin from "./pages/Admin/Admin";
 import Cart from "./pages/Cart/Cart";
 import Menu from "./pages/Menu/Menu";
 import PageNotFound from "./pages/PageNotFound/PageNotFound";
+import Loading from "./pages/Loading/Loading";
 
 export const router = createBrowserRouter([
     {

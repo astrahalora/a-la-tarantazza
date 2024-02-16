@@ -1,22 +1,28 @@
 import { useSelector } from "react-redux";
+import { useState, useEffect } from "react";
 import Loading from "../../Loading/Loading";
 import ErrorPage from "../../Error/ErrorPage";
+import { filterByType } from "../../../js/filterByType";
+import Product from "../../../components/Product/Product";
+import "../Products.css";
 
 export default function Pizza() {
-    // const products = useSelector(state => state.product.products);
-    // const loading = useSelector((state) => state.product.loading);
-    // const error = useSelector((state) => state.product.error);
-    const products = useSelector(state => state.product);
+    const productsState = useSelector(state => state.product);
+    const [pizza, setPizza] = useState([]);
 
-    if(products.loading) return <Loading />;
+    useEffect(() => {
+        // Filter products when the products state changes
+        setPizza(filterByType(productsState.products, "pizza"));
+    }, [productsState.products]);
 
-    if(products.error) return <ErrorPage />
+    if (productsState.loading) return <Loading />;
+    if (productsState.error) return <ErrorPage />;
 
     return (
-        <div>
-            {products.products.map((product) => (
-                <p key={product._id}>{product.name}</p>
+        <div className="product-list">
+            {pizza.map((product) => (
+                <Product key={product._id} product={[product]} />
             ))}
         </div>
-    )
+    );
 }
