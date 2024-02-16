@@ -11,7 +11,6 @@ export default function Desserts() {
     const [dessert, setDessert] = useState([]);
 
     useEffect(() => {
-        // Filter products when the products state changes
         setDessert(filterByType(productsState.products, "dessert"));
     }, [productsState.products]);
 
