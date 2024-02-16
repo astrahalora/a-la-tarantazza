@@ -18,6 +18,10 @@
     border-radius: var(--soft-border);
 }
 
+.product > div > h3 {
+    text-align: center;
+}
+
 .product > img {
     width: 220px;
     padding: 1rem;

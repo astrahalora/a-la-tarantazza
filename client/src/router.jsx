@@ -11,7 +11,7 @@ import Admin from "./pages/Admin/Admin";
 import Cart from "./pages/Cart/Cart";
 import Menu from "./pages/Menu/Menu";
 import PageNotFound from "./pages/PageNotFound/PageNotFound";
-import Loading from "./pages/Loading/Loading";
+import Favorites from "./pages/Favorites/Favorites";
 
 export const router = createBrowserRouter([
     {
@@ -42,6 +42,10 @@ export const router = createBrowserRouter([
             {
                 path: "/drinks",
                 element: <Drinks />
+            },
+            {
+                path: "/favorites",
+                element: <Favorites />
             },
             {
                 path: "/client",

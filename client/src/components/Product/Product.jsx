@@ -13,7 +13,7 @@ export default function Product( { product } ) {
                         {product[0].amount > 0 ? `$` + product[0].price : "Unavailable"}
                     </p>
                     {product[0].amount > 0 ? (
-                    <img src={cart} alt="Cart" className="buy-cart"/>
+                        <img src={cart} alt="Cart" className="buy-cart"/>
                     ) : (
                         <img src={unavailableCart} alt="Cart" className="unavailable-cart"/>
                     )}
