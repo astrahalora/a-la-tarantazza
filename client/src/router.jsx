@@ -10,6 +10,7 @@ import Client from "./pages/Client/Client";
 import Admin from "./pages/Admin/Admin";
 import Cart from "./pages/Cart/Cart";
 import Menu from "./pages/Menu/Menu";
+import PageNotFound from "./pages/PageNotFound/PageNotFound";
 
 export const router = createBrowserRouter([
     {
@@ -52,6 +53,10 @@ export const router = createBrowserRouter([
             {
                 path: "/cart",
                 element: <Cart />
+            },
+            {
+                path: "*",
+                element: <PageNotFound />
             }
         ]
     }
