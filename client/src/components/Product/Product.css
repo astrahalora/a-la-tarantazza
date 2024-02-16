@@ -31,7 +31,7 @@
     margin-top: 1rem;
 }
 
-.buy-cart {
+.buy-cart, .unavailable-cart {
     width: 45px;
     background: var(--secondary-accent);
     padding: 0.5rem;
