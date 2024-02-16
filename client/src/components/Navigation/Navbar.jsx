@@ -43,6 +43,11 @@ export default function Navbar() {
                         {dropdown && <Dropdown />}
                     </li>
                     <li className="nav-item">
+                        <NavLink to="/favorites" className="nav-links" onClick={closeMobileMenu}>
+                            Favorites
+                        </NavLink>
+                    </li>
+                    <li className="nav-item">
                         <NavLink to="/admin" className="nav-links" onClick={closeMobileMenu}>
                             Admin
                         </NavLink>
@@ -54,7 +59,7 @@ export default function Navbar() {
                     </li>
                     <li className="nav-item">
                         <NavLink to="/cart" className="nav-links" onClick={closeMobileMenu}>
-                            {width < 960 ? "Cart" : <img src={cart} alt="Shopping Cart" id="cart-img"/>}
+                            {width < 960 ? "My Cart" : <img src={cart} alt="Shopping Cart" id="cart-img"/>}
                         </NavLink>
                     </li>
                 </ul>
