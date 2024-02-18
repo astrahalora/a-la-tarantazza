@@ -12,12 +12,11 @@ export default function ImageSlider() {
     const bannerImgs = [anniversary, newProduct, delivery];
     const [imageIndex, setImageIndex] = useState(0);
 
-    const moveImageForward = () => setImageIndex(prev => (prev + 1) % bannerImgs.length);
     const prevImage = () => setImageIndex(prev => (prev - 1 + bannerImgs.length) % bannerImgs.length);
-    const nextImage = () => moveImageForward();
-    
+    const nextImage = () => setImageIndex(prev => (prev + 1) % bannerImgs.length);
+
     useEffect(() => {
-        const regInterval = setInterval(moveImageForward, 10000);
+        const regInterval = setInterval(nextImage, 10000);
 
         return () => clearInterval(regInterval);
     }, []);
@@ -27,19 +26,19 @@ export default function ImageSlider() {
             <div className="imgs-container">
                 {bannerImgs.map((img) => (
                     <img key={img} src={img} alt="Banner Image" className="banner-img"
-                    style={{translate: `${ - 100 * imageIndex }%`}} />
+                        style={{ translate: `${- 100 * imageIndex}%` }} />
                 ))}
             </div>
             <div className="control-div div-left" onClick={() => prevImage()}>
-                <img src={arrowLeft} alt="Arrow Left" className="control-arrow arrow-left"/>
+                <img src={arrowLeft} alt="Arrow Left" className="control-arrow arrow-left" />
             </div>
             <div className="control-div div-right" onClick={() => nextImage()}>
-                <img src={arrowRight} alt="Arrow Right" className="control-arrow arrow-right"/>
+                <img src={arrowRight} alt="Arrow Right" className="control-arrow arrow-right" />
             </div>
             <div className="control-btns">
                 {bannerImgs.map((img, index) => (
-                    <button key={index} type="button" 
-                    onClick={() => setImageIndex(index)}>
+                    <button key={index} type="button"
+                        onClick={() => setImageIndex(index)}>
                         {index === imageIndex ? (
                             <img src={circleDotFull} alt="Full Circle Dot" />
                         ) : (

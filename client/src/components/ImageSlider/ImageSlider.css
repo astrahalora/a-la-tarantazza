@@ -13,6 +13,7 @@
 
 .banner-img {
     width: 100%;
+    border-radius: var(--soft-border);
     transition: translate 300ms ease-in-out;
 }
 
@@ -50,8 +51,9 @@
 .control-btns {
     position: absolute;
     bottom: 1rem;
-    left: 46%;
+    width: 100%;
     display: flex;
+    justify-content: center;
     gap: 0.25rem;
 }
 
