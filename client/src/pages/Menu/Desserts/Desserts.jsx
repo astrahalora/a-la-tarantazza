@@ -7,7 +7,7 @@ import Product from "../../../components/Product/Product";
 import "../Products.css";
 
 export default function Desserts() {
-    const productsState = useSelector(state => state.product);
+    const productsState = useSelector(state => state.productList);
     const [dessert, setDessert] = useState([]);
 
     useEffect(() => {

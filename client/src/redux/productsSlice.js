@@ -8,7 +8,7 @@ const initialState = {
     error: null
 }
 
-export const fetchProducts = createAsyncThunk("product/fetchProducts", async () => {
+export const fetchProducts = createAsyncThunk("productList/fetchProducts", async () => {
     try {
         const response = await axios.get(productsUrl);
         return [...response.data];
@@ -18,7 +18,7 @@ export const fetchProducts = createAsyncThunk("product/fetchProducts", async () 
 });
 
 const productsSlice = createSlice({
-    name: "product",
+    name: "productList",
     initialState,
     extraReducers: (builder) => {
         builder

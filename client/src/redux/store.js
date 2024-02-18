@@ -1,9 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-import productReducer, { fetchProducts } from "./productsSlice";
+import productsReducer, { fetchProducts } from "./productsSlice";
 
 const store = configureStore({
   reducer: {
-    product: productReducer,
+    productList: productsReducer,
     // Add other reducers here if you have more slices
   },
 });
