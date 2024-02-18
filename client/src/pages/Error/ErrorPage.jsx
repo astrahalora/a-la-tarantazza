@@ -9,7 +9,7 @@ export default function ErrorPage() {
     <div className="notice">
       <div>
         <h2>Oh no!</h2>
-        <img src={wrongPizza} alt="Melting Pizza Slice" />
+        <img src={wrongPizza} alt="Melting Pizza Slice" className="error-img" />
       </div>
       <h1>Something didn't work as intended.</h1>
       <div className="notice-action">

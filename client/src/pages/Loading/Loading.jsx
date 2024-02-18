@@ -1,7 +1,10 @@
+import loading from "../../img/strawberry_loading.webp";
+import "./Loading.css";
+
 export default function Loading() {
     return (
         <div className="notice">
-            <h2>Loading...</h2>
+            <img src={loading} alt="Loading..." class="loading-image"/>
         </div>
     )
 }
