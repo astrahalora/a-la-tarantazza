@@ -18,10 +18,10 @@ export default function Desserts() {
     if (productsState.error) return <ErrorPage />;
 
     return (
-        <div className="product-list">
+        <section className="product-list">
             {dessert.map((product) => (
                 <Product key={product._id} product={[product]} />
             ))}
-        </div>
+        </section>
     );
 }

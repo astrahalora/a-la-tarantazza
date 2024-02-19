@@ -19,10 +19,10 @@ export default function Pizza() {
     if (productsState.error) return <ErrorPage />;
 
     return (
-        <div className="product-list">
+        <section className="product-list">
             {pizza.map((product) => (
                 <Product key={product._id} product={[product]} />
             ))}
-        </div>
+        </section>
     );
 }

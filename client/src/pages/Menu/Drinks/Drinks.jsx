@@ -18,10 +18,10 @@ export default function Drinks() {
     if (productsState.error) return <ErrorPage />;
 
     return (
-        <div className="product-list">
+        <section className="product-list">
             {drinks.map((product) => (
                 <Product key={product._id} product={[product]} />
             ))}
-        </div>
+        </section>
     );
 }

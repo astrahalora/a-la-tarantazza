@@ -9,7 +9,7 @@ export default function Menu() {
     const navigate = useNavigate();
 
     return (
-        <div className="main-menu">
+        <section className="main-menu">
             <div className="pizza-info infos" onClick={() => navigate("/pizza")}>
                 <img src={pizza} alt="Pizza" />
                 <div>
@@ -50,6 +50,6 @@ export default function Menu() {
                     <p> - happiness in a bottle</p>
                 </div>
             </div>
-        </div>
+        </section>
     )
 }
