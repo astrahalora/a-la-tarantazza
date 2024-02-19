@@ -8,8 +8,9 @@ import circleDot from "../../img/circle_dot.png";
 import circleDotFull from "../../img/circle_dot_full.png";
 import "./ImageSlider.css";
 
+const bannerImgs = [anniversary, newProduct, delivery];
+
 export default function ImageSlider() {
-    const bannerImgs = [anniversary, newProduct, delivery];
     const [imageIndex, setImageIndex] = useState(0);
 
     const prevImage = () => setImageIndex(prev => (prev - 1 + bannerImgs.length) % bannerImgs.length);
@@ -42,7 +43,7 @@ export default function ImageSlider() {
                         {index === imageIndex ? (
                             <img src={circleDotFull} alt="Full Circle Dot" />
                         ) : (
-                            <img src={circleDot} alt="Circle Dot" srcset="" />
+                            <img src={circleDot} alt="Circle Dot" />
                         )}
                     </button>
                 ))}

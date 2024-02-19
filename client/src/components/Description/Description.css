@@ -1,0 +1,12 @@
+.description-container {
+    padding: 3rem;
+}
+
+.description-container p {
+    font-size: 20px;
+}
+
+.description-container p:nth-child(2) {
+    text-align: end;
+    margin-top: 5px;
+}

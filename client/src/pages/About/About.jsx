@@ -1,10 +1,12 @@
 import "./About.css";
 import ImageSlider from "../../components/ImageSlider/ImageSlider";
+import Description from "../../components/Description/Description";
 
 export default function About() {
     return (
-        <div className="about">
+        <section className="about">
             <ImageSlider />
-        </div>
+            <Description />
+        </section>
     )
 }

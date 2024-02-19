@@ -24,7 +24,7 @@
 
 .product > img {
     width: 220px;
-    padding: 1rem;
+    padding: 1rem 2rem 1rem 0;
 }
 
 .product-info {
