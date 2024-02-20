@@ -12,6 +12,7 @@ import Cart from "./pages/Cart/Cart";
 import Menu from "./pages/Menu/Menu";
 import PageNotFound from "./pages/PageNotFound/PageNotFound";
 import Favorites from "./pages/Favorites/Favorites";
+import ProductDetails from "./pages/ProductDetails/ProductDetails";
 
 export const router = createBrowserRouter([
     {
@@ -42,6 +43,10 @@ export const router = createBrowserRouter([
             {
                 path: "/drinks",
                 element: <Drinks />
+            },
+            {
+                path: "/details",
+                element: <ProductDetails />
             },
             {
                 path: "/favorites",

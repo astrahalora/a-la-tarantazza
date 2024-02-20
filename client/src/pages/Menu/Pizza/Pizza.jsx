@@ -1,14 +1,23 @@
-import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { setProduct } from "../../../redux/productDetailsSlice";
+import { filterByType } from "../../../js/filterByType";
 import Loading from "../../Loading/Loading";
 import ErrorPage from "../../Error/ErrorPage";
-import { filterByType } from "../../../js/filterByType";
 import Product from "../../../components/Product/Product";
 import "../Products.css";
 
 export default function Pizza() {
     const productsState = useSelector(state => state.productList);
     const [pizza, setPizza] = useState([]);
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+    const showProductDetails = (product) => {
+        dispatch(setProduct([product]));
+        navigate("/details");
+    }
 
     useEffect(() => {
         // Filter products when the products state changes
@@ -21,7 +30,10 @@ export default function Pizza() {
     return (
         <section className="product-list">
             {pizza.map((product) => (
-                <Product key={product._id} product={[product]} />
+                <Product
+                    key={product._id}
+                    product={[product]}
+                    onClick={() => showProductDetails(product)} />
             ))}
         </section>
     );

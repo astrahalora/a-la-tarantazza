@@ -1,11 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 import productsReducer, { fetchProducts } from "./productsSlice";
+import productDetailsReducer from "./productDetailsSlice";
 
 const store = configureStore({
   reducer: {
     productList: productsReducer,
-    // Add other reducers here if you have more slices
-  },
+    product: productDetailsReducer
+  }
 });
 
 // Dispatch the fetchProducts action to load initial data when the app starts

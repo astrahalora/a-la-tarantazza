@@ -29,6 +29,10 @@
     margin: 0.3rem;
 }
 
+.extra-list ul li a {
+    transition: var(--transition);
+}
+
 .extra-list ul li a:hover {
     color: var(--primary-accent);
 }
