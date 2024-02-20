@@ -16,7 +16,7 @@ export default function Pizza() {
 
     const showProductDetails = (product) => {
         dispatch(setProduct([product]));
-        navigate("/details");
+        navigate("/product-details");
     }
 
     useEffect(() => {

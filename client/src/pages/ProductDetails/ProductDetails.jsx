@@ -1,4 +1,6 @@
 import { useSelector } from "react-redux";
+import heartEmpty from "../../img/heart_empty.png";
+import heartFull from "../../img/heart_full.png";
 import "./ProductDetails.css";
 
 export default function ProductDetails() {
