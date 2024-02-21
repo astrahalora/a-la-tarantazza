@@ -7,6 +7,8 @@ import "./ProductDetails.css";
 export default function ProductDetails() {
     const detailsState = useSelector(state => state.product.details);
     const productsInCart = useSelector(state => state.cart.products);
+    const productName = detailsState[0].name;
+    const inStock = detailsState[0].amount;
     const dispatch = useDispatch();
 
     const addToCart = (product) => {
@@ -30,12 +32,12 @@ export default function ProductDetails() {
             {detailsState.length > 0 ? (
                 <div className="product-details">
                     <div className="details-1">
-                        <h2>{detailsState[0].name}</h2>
-                        <img src={detailsState[0].imageUrl} alt={detailsState[0].name} className="detail-img"/>
+                        <h2>{productName}</h2>
+                        <img src={detailsState[0].imageUrl} alt={productName} className="detail-img"/>
                     </div>
                     <div className="details-2">
                         <div className="in-stock">
-                            <h3>In Stock: {detailsState[0].amount}</h3>
+                            <h3>In Stock: {inStock}</h3>
                         </div>
                         <div className="ingredients">
                             <h3>Ingredients:</h3>
@@ -57,13 +59,18 @@ export default function ProductDetails() {
                         </div>
                         <div className="interaction-btns">
                             <div className="add-or-remove-btns">
-                                <button type="button" className="decrement-btn">-</button>
+                                <button 
+                                    type="button" 
+                                    className="decrement-btn"
+                                    disabled={inStock === 0}>
+                                    -
+                                </button>
                                 <p>{quantityInCart() ? quantityInCart() : "0"}</p>
                                 <button 
                                     type="button" 
                                     className="increment-btn" 
                                     onClick={() => addToCart(detailsState[0])}
-                                    disabled={detailsState[0].amount === 0}>
+                                    disabled={inStock === 0}>
                                     +
                                 </button>
                             </div>

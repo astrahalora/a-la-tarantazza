@@ -55,6 +55,7 @@ textarea {
     --dark-medium: rgb(32, 28, 32);
     --dark-lightest: rgb(54, 47, 47);
     --medium: rgba(54, 47, 47, 0.9);
+    --disabled: gray;
     --soft-border: 5px;
     --transition: all 0.3s ease;
 }

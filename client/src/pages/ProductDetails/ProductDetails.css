@@ -77,3 +77,13 @@
 .add-or-remove-btns button:hover {
     background: var(--tertiary-accent);
 }
+
+.decrement-btn:disabled, .increment-btn:disabled {
+    background: var(--disabled);
+}
+
+.decrement-btn:disabled:hover,
+.increment-btn:disabled:hover {
+    background-color: var(--disabled);
+    cursor: default; 
+}
