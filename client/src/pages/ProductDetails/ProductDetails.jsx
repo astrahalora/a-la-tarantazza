@@ -17,6 +17,9 @@ export default function ProductDetails() {
                         <img src={detailsState[0].imageUrl} alt={detailsState[0].name} className="detail-img"/>
                     </div>
                     <div className="details-2">
+                        <div className="in-stock">
+                            <h3>In Stock: {detailsState[0].amount}</h3>
+                        </div>
                         <div className="ingredients">
                             <h3>Ingredients:</h3>
                             <p>{detailsState[0].ingredients.map((ingredient, index) => (

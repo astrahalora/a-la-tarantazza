@@ -11,14 +11,18 @@ export const cartSlice = createSlice({
         addProductToCart: (state, action) => {
             for (let i = 0; i < state.products.length; i++) {
                 if (state.products[i]._id === action.payload._id) {
-                    state.products[i].quantity += 1;
-                    localStorage.setItem("cart", JSON.stringify(state.products));
+                    if(state.products[i].quantity < action.payload.amount) {
+                        state.products[i].quantity += 1;
+                        localStorage.setItem("cart", JSON.stringify(state.products));
+                    }
                     return;
                 }
             }
             const productToAdd = {
                 _id: action.payload._id,
                 name: action.payload.name,
+                imageUrl: action.payload.imageUrl,
+                price: action.payload.price,
                 quantity: 1
             }
             state.products.push(productToAdd);
