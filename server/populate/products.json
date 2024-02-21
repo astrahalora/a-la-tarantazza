@@ -260,7 +260,7 @@
         "type": "pizza",
         "imageUrl": "https://images2.imgbox.com/76/57/aHKvjSfz_o.png",
         "ingredients": [
-            "All-purpose flour",
+            "Rice Flour",
             "Beef",
             "Tomato sauce",
             "Feta cheese",
@@ -268,7 +268,6 @@
             "Olive oil"
         ],
         "alergens": [
-            "Gluten",
             "Milk"
         ],
         "price": 12.35
@@ -371,7 +370,7 @@
         "type": "pizza",
         "imageUrl": "https://images2.imgbox.com/70/69/mwMTMudi_o.png",
         "ingredients": [
-            "All-purpose flour",
+            "Rice flour",
             "Tomato sauce",
             "Mozzarella cheese",
             "Shrimp",
@@ -379,7 +378,6 @@
             "Olive oil"
         ],
         "alergens": [
-            "Gluten",
             "Milk",
             "Shellfish"
         ],
