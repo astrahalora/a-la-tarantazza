@@ -11,12 +11,18 @@ import { useWindowDimensions } from "../../js/useWindowDimensions";
 import Dropdown from "./Dropdown/Dropdown";
 import "./Navbar.css";
 
+const calculateTotalQuantity = (products) => {
+    return products.reduce((totalQuantity, product) => {
+        return totalQuantity + (product.quantity || 0);
+    }, 0);
+};
 
 export default function Navbar() {
     const { width } = useWindowDimensions();
     const [menuIsOpen, setMenuIsOpen] = useState(false);
     const [dropdown, setDropdown] = useState(false);
     const productsInCart = useSelector(state => state.cart.products);
+    const totalQuantity = calculateTotalQuantity(productsInCart);
 
     const handleOpenMenu = () => setMenuIsOpen(prev => !prev);
     const closeMobileMenu = () => setMenuIsOpen(false);
@@ -65,7 +71,7 @@ export default function Navbar() {
                             <div className="cart-div">
                                 <img src={cart} alt="Shopping Cart" id="cart-img"/>
                                 {productsInCart.length > 0 ? (
-                                    <span>{productsInCart.length}</span>
+                                    <span>{totalQuantity}</span>
                                 ) : null} 
                             </div>}
                         </NavLink>

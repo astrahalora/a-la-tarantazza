@@ -51,10 +51,6 @@ export default function ProductsList( { productType }) {
         setProducts(prev => filterByPhrase(prev, searchPhrase));
     };
 
-    const addToCart = (product) => {
-        dispatch(addProductToCart(product));
-    }
-
     return (
         <section className="product-list">
             <Filter 
@@ -68,7 +64,7 @@ export default function ProductsList( { productType }) {
                     key={product._id}
                     product={[product]}
                     showDetails={() => showProductDetails(product)}
-                    addToCart={() => addToCart(product)} />
+                    addToCart={() => dispatch(addProductToCart(product))} />
             ))}
             </div>
         </section>

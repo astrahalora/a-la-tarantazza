@@ -71,7 +71,7 @@ export default function ProductDetails() {
                                     +
                                 </button>
                             </div>
-                            <button type="button" className="favorite-btn base-btn">
+                            <button type="button" className="base-btn">
                                 Add to Favorites
                             </button>
                         </div>
