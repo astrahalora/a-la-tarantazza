@@ -42,7 +42,7 @@
         "type": "dessert",
         "imageUrl": "https://images2.imgbox.com/9c/ce/W5YQoNL2_o.png",
         "ingredients": [
-            "All-purpose flour",
+            "Rice Flour",
             "Bananas",
             "Sugar",
             "Cornstarch",
@@ -54,7 +54,6 @@
             "Whipped cream"
         ],
         "alergens": [
-            "Gluten",
             "Milk",
             "Eggs"
         ],
@@ -105,7 +104,7 @@
         "type": "dessert",
         "imageUrl": "https://images2.imgbox.com/a5/5d/81U37zMj_o.png",
         "ingredients": [
-            "All-purpose flour",
+            "Rice Flour",
             "Sugar",
             "Cinnamon",
             "Nutmeg",
@@ -120,7 +119,6 @@
             "Vanilla extract"
         ],
         "alergens": [
-            "Gluten",
             "Milk",
             "Eggs",
             "Tree nuts"
@@ -164,12 +162,11 @@
             "Cinnamon",
             "Nutmeg",
             "Vanilla extract",
-            "Cream",
-            "Whipped cream"
+            "Coconut Cream",
+            "Coconut Whipped cream"
         ],
         "alergens": [
             "Gluten",
-            "Milk",
             "Eggs"
         ],
         "price": 15.5
@@ -179,7 +176,7 @@
         "type": "dessert",
         "imageUrl": "https://images2.imgbox.com/c7/b6/VMuMt5c8_o.png",
         "ingredients": [
-            "All-purpose flour",
+            "Rice Flour",
             "Bananas",
             "Chocolate chips",
             "Cream",
@@ -192,7 +189,6 @@
             "Whipped cream"
         ],
         "alergens": [
-            "Gluten",
             "Milk",
             "Eggs"
         ],
@@ -299,18 +295,16 @@
         "type": "dessert",
         "imageUrl": "https://images2.imgbox.com/91/d8/zb6yT6Md_o.png",
         "ingredients": [
-            "All-purpose flour",
+            "Rice Flour",
             "Sugar",
             "Salt",
-            "Butter",
+            "Vegan Sour Cream",
             "Eggs",
             "Lemons",
             "Vanilla extract",
-            "Buttermilk"
+            "Almond milk"
         ],
         "alergens": [
-            "Gluten",
-            "Milk",
             "Eggs"
         ],
         "price": 11.20

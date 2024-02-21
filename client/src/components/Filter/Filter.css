@@ -22,4 +22,5 @@
 .filter select {
     background: var(--dark-medium);
     color: var(--light);
+    text-align: center;
 }
