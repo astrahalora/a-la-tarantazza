@@ -2,9 +2,8 @@ import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { setProduct } from "../../../redux/productDetailsSlice";
-import { filterByType } from "../../../js/filterByType";
+import { filterByType, filterOutByString, filterByPhrase } from "../../../js/filtering";
 import { getAllergenList } from "../../../js/getAllergenList";
-import { filterOutByString } from "../../../js/filterOutByString";
 import Loading from "../../Loading/Loading";
 import ErrorPage from "../../Error/ErrorPage";
 import Product from "../../../components/Product/Product";
@@ -48,9 +47,7 @@ export default function Pizza() {
     const searchByName = (input) => {
         const searchPhrase = input.current.value.toLowerCase();
         setPizza(filteredPizza);
-        setPizza(prev => {
-            return [...prev].filter((item => item.name.toLowerCase().includes(searchPhrase)));
-        });
+        setPizza(prev => filterByPhrase(prev, searchPhrase));
     };
 
     return (

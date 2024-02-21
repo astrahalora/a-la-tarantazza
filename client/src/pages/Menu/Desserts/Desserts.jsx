@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import Loading from "../../Loading/Loading";
 import ErrorPage from "../../Error/ErrorPage";
-import { filterByType } from "../../../js/filterByType";
+import { filterByType, filterOutByString, filterByPhrase } from "../../../js/filtering";
 import Product from "../../../components/Product/Product";
 import "../Products.css";
 
