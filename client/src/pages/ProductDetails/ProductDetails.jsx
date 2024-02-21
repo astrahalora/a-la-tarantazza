@@ -11,10 +11,6 @@ export default function ProductDetails() {
     const inStock = detailsState[0].amount;
     const dispatch = useDispatch();
 
-    const addToCart = (product) => {
-        dispatch(addProductToCart(product));
-    }
-
     const quantityInCart = () => {
         const foundProduct = productsInCart.find(product => product._id === detailsState[0]._id);
     
@@ -62,6 +58,7 @@ export default function ProductDetails() {
                                 <button 
                                     type="button" 
                                     className="decrement-btn"
+                                    onClick={() => dispatch(removeProductFromCart(detailsState[0]))}
                                     disabled={inStock === 0}>
                                     -
                                 </button>
@@ -69,7 +66,7 @@ export default function ProductDetails() {
                                 <button 
                                     type="button" 
                                     className="increment-btn" 
-                                    onClick={() => addToCart(detailsState[0])}
+                                    onClick={() => dispatch(addProductToCart(detailsState[0]))}
                                     disabled={inStock === 0}>
                                     +
                                 </button>
