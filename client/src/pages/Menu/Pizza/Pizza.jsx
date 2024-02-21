@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { setProduct } from "../../../redux/productDetailsSlice";
 import { filterByType } from "../../../js/filterByType";
 import { getAllergenList } from "../../../js/getAllergenList";
+import { filterOutByString } from "../../../js/filterOutByString";
 import Loading from "../../Loading/Loading";
 import ErrorPage from "../../Error/ErrorPage";
 import Product from "../../../components/Product/Product";
@@ -12,6 +13,7 @@ import Filter from "../../../components/Filter/Filter";
 
 export default function Pizza() {
     const productsState = useSelector(state => state.productList);
+    const [data, setData] = useState([]);
     const [filteredPizza, setFilteredPizza] = useState([]);
     const [pizza, setPizza] = useState([]);
     const dispatch = useDispatch();
@@ -24,6 +26,7 @@ export default function Pizza() {
 
     useEffect(() => {
         // Filter products when the products state changes
+        setData(filterByType(productsState.products, "pizza"));
         setFilteredPizza(filterByType(productsState.products, "pizza"));
         setPizza(filterByType(productsState.products, "pizza"));
     }, [productsState.products]);
@@ -34,13 +37,12 @@ export default function Pizza() {
     const filterByAllergen = (input, select) => {
         const optionName = select.current.value;
         input.current.value = "";
-        setFilteredPizza(filterByType(productsState.products, "pizza"));
-        setPizza(filterByType(productsState.products, "pizza"));
+        setFilteredPizza(data);
+        setPizza(data);
 
         if(optionName === "-- See All --") return;
-        setPizza(prev => {
-            return [...prev].filter(item => !item.alergens.includes(optionName));
-        })
+        setFilteredPizza(prev => filterOutByString(prev, optionName));
+        setPizza(prev => filterOutByString(prev, optionName));
     }
 
     const searchByName = (input) => {
@@ -54,7 +56,7 @@ export default function Pizza() {
     return (
         <section className="product-list">
             <Filter 
-                allergens={getAllergenList(productsState.products)}
+                allergens={getAllergenList(data)}
                 filter={filterByAllergen}
                 search={searchByName}
                  />

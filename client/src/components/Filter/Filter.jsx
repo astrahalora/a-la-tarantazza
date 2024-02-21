@@ -7,8 +7,10 @@ export default function Filter({ allergens, filter, search }) {
 
     return (
         <div className="filter">
+            <h3>Remove all with: </h3>
             <select 
-                name="filter-out-allergen" 
+                name="filter-out-allergen"
+                title="Filter out by allergen" 
                 className="filter-out-allergen"
                 onChange={() => filter(inputElement, selectElement)}
                 ref={selectElement}
