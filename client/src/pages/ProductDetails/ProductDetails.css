@@ -10,14 +10,13 @@
 
 .liked {
     position: absolute;
-    width: 50px;
+    width: 54px;
     top: 20px;
     right: 20px;
 }
 
 .product-details {
     display: flex;
-    justify-content: space-between;
     background: var(--dark-lightest);
     padding: 2rem;
     width: 100%;
@@ -72,4 +71,9 @@
     font-size: 26px;
     color: var(--dark);
     border-radius: var(--soft-border);
+    transition: var(--transition);
+}
+
+.add-or-remove-btns button:hover {
+    background: var(--tertiary-accent);
 }
