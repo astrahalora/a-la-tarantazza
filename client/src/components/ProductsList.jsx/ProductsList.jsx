@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { setProduct } from "../../redux/productDetailsSlice";
 import { filterByType, filterOutByString, filterByPhrase } from "../../js/filtering";
+import { addProductToCart } from "../../redux/cartSlice";
 import { getAllergenList } from "../../js/getAllergenList";
 import Loading from "../../pages/Loading/Loading";
 import ErrorPage from "../../pages/Error/ErrorPage";
@@ -50,6 +51,10 @@ export default function ProductsList( { productType }) {
         setProducts(prev => filterByPhrase(prev, searchPhrase));
     };
 
+    const addToCart = (product) => {
+        dispatch(addProductToCart(product));
+    }
+
     return (
         <section className="product-list">
             <Filter 
@@ -62,7 +67,8 @@ export default function ProductsList( { productType }) {
                 <Product
                     key={product._id}
                     product={[product]}
-                    onClick={() => showProductDetails(product)} />
+                    showDetails={() => showProductDetails(product)}
+                    addToCart={() => addToCart(product)} />
             ))}
             </div>
         </section>

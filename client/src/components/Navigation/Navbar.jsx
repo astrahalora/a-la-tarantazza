@@ -1,5 +1,6 @@
 import { Outlet, NavLink } from "react-router-dom";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 import tazzaLogo from "../../img/tazza_logo_4.png";
 import menu from "../../img/menu.png";
 import close from "../../img/close.png";
@@ -15,6 +16,7 @@ export default function Navbar() {
     const { width } = useWindowDimensions();
     const [menuIsOpen, setMenuIsOpen] = useState(false);
     const [dropdown, setDropdown] = useState(false);
+    const productsInCart = useSelector(state => state.cart.products);
 
     const handleOpenMenu = () => setMenuIsOpen(prev => !prev);
     const closeMobileMenu = () => setMenuIsOpen(false);
@@ -59,7 +61,13 @@ export default function Navbar() {
                     </li>
                     <li className="nav-item">
                         <NavLink to="/cart" className="nav-links" onClick={closeMobileMenu}>
-                            {width < 960 ? "My Cart" : <img src={cart} alt="Shopping Cart" id="cart-img"/>}
+                            {width < 960 ? "My Cart" : 
+                            <div className="cart-div">
+                                <img src={cart} alt="Shopping Cart" id="cart-img"/>
+                                {productsInCart.length > 0 ? (
+                                    <span>{productsInCart.length}</span>
+                                ) : null} 
+                            </div>}
                         </NavLink>
                     </li>
                 </ul>

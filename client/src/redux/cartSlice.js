@@ -8,17 +8,29 @@ export const cartSlice = createSlice({
     name: "cart",
     initialState,
     reducers: {
-        addProduct: (state, action) => {
-            state.products.push(action.payload);
+        addProductToCart: (state, action) => {
+            for (let i = 0; i < state.products.length; i++) {
+                if (state.products[i]._id === action.payload._id) {
+                    state.products[i].quantity += 1;
+                    localStorage.setItem("cart", JSON.stringify(state.products));
+                    return;
+                }
+            }
+            const productToAdd = {
+                _id: action.payload._id,
+                name: action.payload.name,
+                quantity: 1
+            }
+            state.products.push(productToAdd);
             localStorage.setItem("cart", JSON.stringify(state.products));
         },
-        removeProduct: (state, action) => {
+        removeProductFromCart: (state, action) => {
             state.products = state.products.filter((item) => item._id !== action.payload);
             localStorage.setItem("cart", JSON.stringify(state.products));
         }
     }
 })
 
-export const { addProduct, removeProduct } = cartSlice.actions;
+export const { addProductToCart, removeProductFromCart } = cartSlice.actions;
 
 export default cartSlice.reducer;
