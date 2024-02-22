@@ -4,6 +4,7 @@ import { addProductToCart, removeProductFromCart } from "../../redux/cartSlice";
 import { addProductToFavorites, removeProductFromFavorites } from "../../redux/favoriteSlice";
 import { favoritesUrl } from "../../js/endpoints";
 import { postContent } from "../../js/postContent";
+import { deleteOneItem } from "../../js/deleteOneItem";
 import heartEmpty from "../../img/heart_empty.png";
 import heartFull from "../../img/heart_full.png";
 import cart from "../../img/shopping_cart.png";
@@ -96,7 +97,10 @@ export default function ProductDetails() {
                             </div>
                             {isInFavorites() ? (
                                 <button type="button" className="base-btn"
-                                    onClick={() => dispatch(removeProductFromFavorites(detailsState[0]))}>
+                                    onClick={() => {
+                                        dispatch(removeProductFromFavorites(detailsState[0]));
+                                        deleteOneItem(favoritesUrl, detailsState[0]._id);
+                                    }}>
                                     Remove From Favorites
                                 </button>
                             ) : (

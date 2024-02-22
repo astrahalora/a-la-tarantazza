@@ -60,6 +60,22 @@ app.route("/favorites")
         }
     })
 
+app.route("/favorites/:id")
+    .delete(async (req, res) => {
+        const favoriteId = req.params.id;
+
+        try {
+            const favorite = await FavoriteModel.findOneAndDelete({_id: favoriteId});
+
+            if(!favorite) {
+                return res.status(404).json({message: "Favorite not found"});
+            }
+            return res.status(200).json({massage: "Favorite deleted"});
+        } catch (err) {
+            serverErrorHandler(res, err);
+        }
+    })
+
 const main = async () => {
     await mongoose.connect(MONGO_URL);
 
