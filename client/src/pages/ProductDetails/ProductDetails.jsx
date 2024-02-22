@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { addProductToCart, removeProductFromCart } from "../../redux/cartSlice";
 import { addProductToFavorites, removeProductFromFavorites } from "../../redux/favoriteSlice";
+import { getQuantityInCart } from "../../js/getQuantityInCart";
+import { isInFavorites } from "../../js/IsItemInFavorites";
 import { favoritesUrl } from "../../js/endpoints";
 import { postContent } from "../../js/postContent";
 import { deleteOneItem } from "../../js/deleteOneItem";
@@ -19,6 +21,7 @@ export default function ProductDetails() {
     const productsInCart = useSelector(state => state.cart.products);
     const [favorites, setFavorites] = useState([]);
 
+    const productToDisplay = detailsState[0];
     const productName = detailsState[0].name;
     const inStock = detailsState[0].amount;
     const dispatch = useDispatch();
@@ -29,30 +32,16 @@ export default function ProductDetails() {
 
     if(favoritesState.loading) return <Loading />;
     if(favoritesState.error) return <ErrorPage />;
-
-    const quantityInCart = () => {
-        const foundProduct = productsInCart.find(product => product._id === detailsState[0]._id);
-    
-        if (foundProduct && foundProduct.quantity !== undefined) return foundProduct.quantity;
-        return null;
-    }
-
-    const isInFavorites = () => {
-        const foundFavorite = favorites.find(product => product._id === detailsState[0]._id);
-
-        if(foundFavorite) return true;
-        return false;
-    }
     
     return (
         <div className="product-details-frame">
-            <img src={isInFavorites() ? heartFull : heartEmpty} alt="Empty Heart" className="liked" />
+            <img src={isInFavorites(favorites, productToDisplay) ? heartFull : heartEmpty} alt="Empty Heart" className="liked" />
             <>
             {detailsState.length > 0 ? (
                 <div className="product-details">
                     <div className="details-1">
                         <h2>{productName}</h2>
-                        <img src={detailsState[0].imageUrl} alt={productName} className="detail-img"/>
+                        <img src={productToDisplay.imageUrl} alt={productName} className="detail-img"/>
                     </div>
                     <div className="details-2">
                         <div className="in-stock">
@@ -60,15 +49,15 @@ export default function ProductDetails() {
                         </div>
                         <div className="ingredients">
                             <h3>Ingredients:</h3>
-                            <p>{detailsState[0].ingredients.map((ingredient, index) => (
+                            <p>{productToDisplay.ingredients.map((ingredient, index) => (
                                 <span key={index}>{ingredient}, </span>
                             ))}</p>
                         </div>
                         <div className="allergens">
                             <h3>Allergens:</h3>
                             <p>
-                                {detailsState[0].alergens.length > 0 ? (
-                                    detailsState[0].alergens.map((allergen, index) => (
+                                {productToDisplay.alergens.length > 0 ? (
+                                    productToDisplay.alergens.map((allergen, index) => (
                                         <span key={index}>{allergen}, </span>
                                     ))
                                 ) : (
@@ -81,25 +70,27 @@ export default function ProductDetails() {
                                 <button 
                                     type="button" 
                                     className="decrement-btn"
-                                    onClick={() => dispatch(removeProductFromCart(detailsState[0]))}
+                                    onClick={() => dispatch(removeProductFromCart(productToDisplay))}
                                     disabled={inStock === 0}>
                                     -
                                 </button>
-                                <p>{quantityInCart() ? quantityInCart() : "0"}</p>
+                                <p>{getQuantityInCart(productsInCart, productToDisplay) ? 
+                                    getQuantityInCart(productsInCart, productToDisplay) : "0"}
+                                </p>
                                 <button 
                                     type="button" 
                                     className="increment-btn" 
-                                    onClick={() => dispatch(addProductToCart(detailsState[0]))}
+                                    onClick={() => dispatch(addProductToCart(productToDisplay))}
                                     disabled={inStock === 0}>
                                     +
                                 </button>
                                 <img src={inStock === 0 ? unavailableCart : cart} alt="Cart" className="cart-rep"/>
                             </div>
-                            {isInFavorites() ? (
+                            {isInFavorites(favorites, productToDisplay) ? (
                                 <button type="button" className="base-btn"
                                     onClick={() => {
-                                        dispatch(removeProductFromFavorites(detailsState[0]));
-                                        deleteOneItem(favoritesUrl, detailsState[0]._id);
+                                        dispatch(removeProductFromFavorites(productToDisplay));
+                                        deleteOneItem(favoritesUrl, productToDisplay._id);
                                     }}>
                                     Remove From Favorites
                                 </button>
@@ -108,10 +99,9 @@ export default function ProductDetails() {
                                     type="button"
                                     className="base-btn"
                                     onClick={() => {
-                                        dispatch(addProductToFavorites(detailsState[0]));
-                                        postContent(detailsState[0], favoritesUrl);
-                                    }}
-                                >
+                                        dispatch(addProductToFavorites(productToDisplay));
+                                        postContent(productToDisplay, favoritesUrl);
+                                    }}>
                                     Add to Favorites
                                 </button>
                             )}
