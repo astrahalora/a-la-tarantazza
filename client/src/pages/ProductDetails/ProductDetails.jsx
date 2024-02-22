@@ -1,31 +1,51 @@
+import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { addProductToCart, removeProductFromCart } from "../../redux/cartSlice";
+import { addProductToFavorites, removeProductFromFavorites } from "../../redux/favoriteSlice";
+import { favoritesUrl } from "../../js/endpoints";
+import { postContent } from "../../js/postContent";
 import heartEmpty from "../../img/heart_empty.png";
 import heartFull from "../../img/heart_full.png";
 import cart from "../../img/shopping_cart.png";
 import unavailableCart from "../../img/shopping_cart_unavailable.png";
 import "./ProductDetails.css";
+import Loading from "../Loading/Loading";
+import ErrorPage from "../Error/ErrorPage";
 
 export default function ProductDetails() {
     const detailsState = useSelector(state => state.product.details);
+    const favoritesState = useSelector(state => state.favoriteList);
     const productsInCart = useSelector(state => state.cart.products);
+    const [favorites, setFavorites] = useState([]);
+
     const productName = detailsState[0].name;
     const inStock = detailsState[0].amount;
     const dispatch = useDispatch();
 
+    useEffect(() => {
+        setFavorites(favoritesState.favorites);
+    }, [favoritesState.favorites]);
+
+    if(favoritesState.loading) return <Loading />;
+    if(favoritesState.error) return <ErrorPage />;
+
     const quantityInCart = () => {
         const foundProduct = productsInCart.find(product => product._id === detailsState[0]._id);
     
-        if (foundProduct && foundProduct.quantity !== undefined) {
-            return foundProduct.quantity;
-        }
-    
+        if (foundProduct && foundProduct.quantity !== undefined) return foundProduct.quantity;
         return null;
+    }
+
+    const isInFavorites = () => {
+        const foundFavorite = favorites.find(product => product._id === detailsState[0]._id);
+
+        if(foundFavorite) return true;
+        return false;
     }
     
     return (
         <div className="product-details-frame">
-            <img src={heartEmpty} alt="Empty Heart" className="liked" />
+            <img src={isInFavorites() ? heartFull : heartEmpty} alt="Empty Heart" className="liked" />
             <>
             {detailsState.length > 0 ? (
                 <div className="product-details">
@@ -74,9 +94,23 @@ export default function ProductDetails() {
                                 </button>
                                 <img src={inStock === 0 ? unavailableCart : cart} alt="Cart" className="cart-rep"/>
                             </div>
-                            <button type="button" className="base-btn">
-                                Add to Favorites
-                            </button>
+                            {isInFavorites() ? (
+                                <button type="button" className="base-btn"
+                                    onClick={() => dispatch(removeProductFromFavorites(detailsState[0]))}>
+                                    Remove From Favorites
+                                </button>
+                            ) : (
+                                <button
+                                    type="button"
+                                    className="base-btn"
+                                    onClick={() => {
+                                        dispatch(addProductToFavorites(detailsState[0]));
+                                        postContent(detailsState[0], favoritesUrl);
+                                    }}
+                                >
+                                    Add to Favorites
+                                </button>
+                            )}
                         </div>
                     </div>
                 </div>

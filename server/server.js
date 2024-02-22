@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 
 const ProductModel = require("./db/product.model");
+const FavoriteModel = require("./db/favorite.model");
 
 const { MONGO_URL, PORT = 8080 } = process.env;
 
@@ -44,14 +45,14 @@ app.route("/products")
 app.route("/favorites")
     .get(async (req, res) => {
         try {
-            const favorites = await ProductModel.find();
+            const favorites = await FavoriteModel.find();
             return res.json(favorites);
         } catch (err) {
             serverErrorHandler(res, err);
         }
     })
     .post(async (req, res) => {
-        const newFavorite = new ProductModel(req.body);
+        const newFavorite = new FavoriteModel(req.body);
         try {
             const favorite = await newFavorite.save();
         } catch (err) {

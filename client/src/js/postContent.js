@@ -1,8 +1,6 @@
-import { favoritesUrl } from "./endpoints";
-
-export const postContent = async (content) => {
+export const postContent = async (content, url) => {
     try {
-        const response = await fetch(favoritesUrl, {
+        const response = await fetch(url, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
