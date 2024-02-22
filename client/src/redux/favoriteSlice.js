@@ -30,15 +30,15 @@ const favoriteSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder
-            .addCase(fetchProducts.pending, (state) => {
+            .addCase(fetchFavorites.pending, (state) => {
                 state.loading = true;
             })
-            .addCase(fetchProducts.fulfilled, (state, action) => {
+            .addCase(fetchFavorites.fulfilled, (state, action) => {
                 state.loading = false;
                 state.favorites = action.payload;
                 state.error = null;
             })
-            .addCase(fetchProducts.rejected, (state, action) => {
+            .addCase(fetchFavorites.rejected, (state, action) => {
                 state.loading = false;
                 state.favorites = [];
                 state.error = action.error.message;

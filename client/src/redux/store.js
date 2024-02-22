@@ -2,7 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import productsReducer, { fetchProducts } from "./productsSlice";
 import productDetailsReducer from "./productDetailsSlice";
 import cartReducer from "./cartSlice";
-import favoriteReducer, { addProductToFavorites, fetchFavorites, removeProductFromFavorites } from "./favoriteSlice";
+import favoriteReducer, { fetchFavorites } from "./favoriteSlice";
 
 const store = configureStore({
   reducer: {
