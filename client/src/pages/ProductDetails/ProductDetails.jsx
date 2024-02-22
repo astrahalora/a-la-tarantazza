@@ -2,6 +2,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { addProductToCart, removeProductFromCart } from "../../redux/cartSlice";
 import heartEmpty from "../../img/heart_empty.png";
 import heartFull from "../../img/heart_full.png";
+import cart from "../../img/shopping_cart.png";
+import unavailableCart from "../../img/shopping_cart_unavailable.png";
 import "./ProductDetails.css";
 
 export default function ProductDetails() {
@@ -70,6 +72,7 @@ export default function ProductDetails() {
                                     disabled={inStock === 0}>
                                     +
                                 </button>
+                                <img src={inStock === 0 ? unavailableCart : cart} alt="Cart" className="cart-rep"/>
                             </div>
                             <button type="button" className="base-btn">
                                 Add to Favorites

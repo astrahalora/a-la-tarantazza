@@ -68,6 +68,7 @@
     position: absolute;
     top: -10px;
     left: 20px;
+    padding-top: 4px;
   }
   
   @media screen and (max-width: 960px) {

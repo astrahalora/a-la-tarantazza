@@ -87,3 +87,8 @@
     background-color: var(--disabled);
     cursor: default; 
 }
+
+.cart-rep {
+    margin-left: 0.7rem;
+    width: 35px;
+}
