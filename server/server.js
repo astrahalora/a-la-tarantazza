@@ -41,6 +41,24 @@ app.route("/products")
         }
     });
 
+app.route("/favorites")
+    .get(async (req, res) => {
+        try {
+            const favorites = await ProductModel.find();
+            return res.json(favorites);
+        } catch (err) {
+            serverErrorHandler(res, err);
+        }
+    })
+    .post(async (req, res) => {
+        const newFavorite = new ProductModel(req.body);
+        try {
+            const favorite = await newFavorite.save();
+        } catch (err) {
+            return res.status(400).json({ message: err.message });
+        }
+    })
+
 const main = async () => {
     await mongoose.connect(MONGO_URL);
 
