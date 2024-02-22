@@ -8,7 +8,7 @@ const initialState = {
     error: null
 }
 
-export const fetchProducts = createAsyncThunk("favoriteList/fetchProducts", async () => {
+export const fetchFavorites = createAsyncThunk("favoriteList/fetchFavorites", async () => {
     try {
         const response = await axios.get(favoritesUrl);
         return [...response.data];
