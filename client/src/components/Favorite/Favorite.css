@@ -1,5 +1,5 @@
 .favorite {
-    background: var(--dark-lightest);
+    background: var(--medium);
     color: var(--light);
     padding: 1rem;
     margin: 0.3rem;
@@ -31,8 +31,19 @@
     justify-content: center;
     line-height: 1.2;
     padding: 1rem;
+    position: relative;
+}
+
+.favorite-2 > div:first-of-type {
+    position: absolute;
+    top: 10px;
+    right: 10px;
 }
 
 .favorite-2 > div:nth-child(2) {
+    margin-top: 2rem;
+}
+
+.favorite-2 > div:nth-child(3) {
     margin-top: 1rem;
 }

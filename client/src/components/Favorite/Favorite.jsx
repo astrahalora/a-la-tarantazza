@@ -9,6 +9,9 @@ export default function Favorite( {favorite} ) {
             </div>
             <div className="favorite-2">
                 <div>
+                    <button type="button" className="base-btn">Remove</button>
+                </div>
+                <div>
                     <h4>Ingredients: </h4>
                     <p>
                         {favorite[0].ingredients.map(item => (
