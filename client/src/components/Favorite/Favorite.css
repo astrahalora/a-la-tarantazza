@@ -1,0 +1,38 @@
+.favorite {
+    background: var(--dark-lightest);
+    color: var(--light);
+    padding: 1rem;
+    margin: 0.3rem;
+    border-radius: var(--soft-border);
+    display: flex;
+    width: 465px;
+}
+
+.favorite-1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 1rem;
+}
+
+.favorite-1 h3 {
+    margin-bottom: 0.5rem;
+}
+
+.fav-img {
+    width: 150px;
+}
+
+.favorite-2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    line-height: 1.2;
+    padding: 1rem;
+}
+
+.favorite-2 > div:nth-child(2) {
+    margin-top: 1rem;
+}
