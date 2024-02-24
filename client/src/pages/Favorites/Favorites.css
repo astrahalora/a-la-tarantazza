@@ -7,8 +7,10 @@
         margin: 1rem auto;
 }
 
-.favorites-menu h2 {
+.favorites-bar {
     margin-bottom: 0.2rem;
+    display: flex;
+    align-items: center;
 }
 
 .favorites {
