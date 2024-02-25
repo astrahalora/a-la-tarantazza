@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef } from "react";
-import { Form } from "react-router-dom";
 import "./OrderForm.css";
 
 export default function OrderForm( {handleSubmit}) {
@@ -8,7 +7,7 @@ export default function OrderForm( {handleSubmit}) {
     const emailRef = useRef();
 
     return (
-        <Form onSubmit={(e) => handleSubmit(e)} className="order-form">
+        <form onSubmit={(e) => handleSubmit(e)} className="order-form">
             <h3>Client Details</h3>
             <div className="client-details-1">
                 <label htmlFor="name">Name: </label>
@@ -47,6 +46,6 @@ export default function OrderForm( {handleSubmit}) {
                     Order Now
                 </button>
             </div>
-        </Form>
+        </form>
     )
 }

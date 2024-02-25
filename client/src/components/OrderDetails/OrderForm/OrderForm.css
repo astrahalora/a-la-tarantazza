@@ -1,11 +1,11 @@
-Form {
-    border-radius: var(--sort-border);
+.order-form {
+    border-radius: var(--soft-border);
     background: var(--cart);
     margin-top: 0.5rem;
     padding: 1rem;
 }
 
-Form h3 {
+.order-form > h3 {
     text-align: center;
     margin-bottom: 0.5rem;
 }
