@@ -2,13 +2,14 @@ import { useState, useEffect, useRef } from "react";
 import { Form } from "react-router-dom";
 import "./OrderForm.css";
 
-export default function OrderForm( {submit}) {
+export default function OrderForm( {handleSubmit}) {
     const nameRef = useRef();
     const addressRef = useRef();
     const emailRef = useRef();
 
     return (
-        <Form onSubmit={(e) => submit(e)} className="order-form">
+        <Form onSubmit={(e) => handleSubmit(e)} className="order-form">
+            <h3>Client Details</h3>
             <div className="client-details-1">
                 <label htmlFor="name">Name: </label>
                 <input 

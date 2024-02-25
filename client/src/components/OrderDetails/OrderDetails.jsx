@@ -13,12 +13,13 @@ export default function OrderDetails() {
     return (
         <div className="order-details">
             <div className="order-summary">
-                <p>Products Cost: </p>
-                <p>Shipping Cost: </p>
-                <p>Total:</p>
+                <h3>Order Summary</h3>
+                <p><strong>Products Cost:</strong> </p>
+                <p><strong>Shipping Cost:</strong> </p>
+                <p><strong>Total:</strong> </p>
             </div>
             <Voucher />
-            <OrderForm submit={handleSubmitForm} />
+            <OrderForm handleSubmit={handleSubmitForm} />
         </div>
     )
 }
