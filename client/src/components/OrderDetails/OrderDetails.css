@@ -3,6 +3,8 @@
     margin: 0 0.5rem;
     display: flex;
     flex-direction: column;
+    font-size: 18px;
+    line-height: 1.2;
 }
 
 .order-summary, .voucher {
@@ -11,13 +13,23 @@
     padding: 1rem;
 }
 
+.order-btn-div {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
 .voucher {
     margin-top: 1rem;
 }
 
+.voucher p {
+    margin-bottom: 0.5rem;
+}
+
 .no-voucher input {
     background: var(--light);
-    padding: 0.5rem;
+    padding: 0.6rem;
     font-size: 18px;
     border-radius: var(--soft-border);
 }
