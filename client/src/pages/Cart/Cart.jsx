@@ -21,7 +21,6 @@ export default function Cart() {
                 </div>
                 <OrderDetails />
             </div>
-
         </div>
     )
 }
