@@ -1,4 +1,5 @@
 import "./OrderDetails.css";
+import OrderForm from "./OrderForm/OrderForm";
 
 export default function OrderDetails() {
     return (
@@ -7,13 +8,6 @@ export default function OrderDetails() {
                 <p>Products Cost: </p>
                 <p>Shipping Cost: </p>
                 <p>Total:</p>
-                <div className="order-btn-div">
-                    <button
-                        type="button"
-                        className="base-btn">
-                        Order Now
-                    </button>
-                </div>
             </div>
             <div className="voucher">
                 <p>Do you have a voucher?</p>
@@ -27,6 +21,7 @@ export default function OrderDetails() {
                     </button>
                 </div>
             </div>
+            <OrderForm />
         </div>
     )
 }

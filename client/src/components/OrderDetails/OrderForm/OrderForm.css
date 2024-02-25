@@ -1,0 +1,12 @@
+.order-form {
+    background: var(--cart);
+    margin-top: 0.5rem;
+    border-radius: var(--sort-border);
+    padding: 1rem;
+}
+
+.order-btn-div {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
