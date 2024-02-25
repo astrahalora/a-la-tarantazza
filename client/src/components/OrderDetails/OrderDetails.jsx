@@ -1,7 +1,15 @@
-import "./OrderDetails.css";
+import { useSelector } from "react-redux";
 import OrderForm from "./OrderForm/OrderForm";
+import Voucher from "./Voucher/Voucher";
+import "./OrderDetails.css";
 
 export default function OrderDetails() {
+    const productsInCart = useSelector(state => state.cart.products);
+
+    const handleSubmitForm = (e) => {
+        e.preventDefault();
+    }
+
     return (
         <div className="order-details">
             <div className="order-summary">
@@ -9,19 +17,8 @@ export default function OrderDetails() {
                 <p>Shipping Cost: </p>
                 <p>Total:</p>
             </div>
-            <div className="voucher">
-                <p>Do you have a voucher?</p>
-                {/* if no voucher applied */}
-                <div className="no-voucher">
-                    <input type="text" placeholder="Code..." />
-                    <button
-                        type="apply-voucher"
-                        className="base-btn">
-                        Add
-                    </button>
-                </div>
-            </div>
-            <OrderForm />
+            <Voucher />
+            <OrderForm submit={handleSubmitForm} />
         </div>
     )
 }
