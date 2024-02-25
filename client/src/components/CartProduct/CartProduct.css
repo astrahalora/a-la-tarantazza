@@ -62,3 +62,13 @@
     justify-content: end;
     margin-top: 0.5rem;
 }
+
+.cart-bow-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cart-bow {
+    height: 40px;
+}
