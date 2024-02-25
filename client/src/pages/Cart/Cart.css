@@ -1,0 +1,24 @@
+.cart-frame {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1rem auto;
+}
+
+.cart-frame h2 {
+    margin-bottom: 1rem;
+}
+
+.order-elements {
+    display: flex;
+    justify-content: center;
+}
+
+.products-in-cart {
+    height: 100%;
+    background: var(--cart);
+    padding: 1rem;
+    margin: 0 0.5rem;
+    border-radius: var(--soft-border);
+}
+

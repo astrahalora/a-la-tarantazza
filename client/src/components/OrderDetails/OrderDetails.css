@@ -1,0 +1,23 @@
+.order-details {
+    height: 100%;
+    margin: 0 0.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.order-summary, .voucher {
+    background: var(--cart);
+    border-radius: var(--soft-border);
+    padding: 1rem;
+}
+
+.voucher {
+    margin-top: 1rem;
+}
+
+.no-voucher input {
+    background: var(--light);
+    padding: 0.5rem;
+    font-size: 18px;
+    border-radius: var(--soft-border);
+}
