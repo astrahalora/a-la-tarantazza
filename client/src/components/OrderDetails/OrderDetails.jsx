@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { calculateItemsCost, calculateDiscountAmount, calculateShippingCost, calculateTotalCost } from "../../js/calculating";
+import "./OrderDetails.css";
 import OrderForm from "./OrderForm/OrderForm";
 import Voucher from "./Voucher/Voucher";
-import "./OrderDetails.css";
 import Summary from "./Summary/Summary";
 
 const expectedVoucher = "CELEBRATE20";
@@ -27,8 +27,14 @@ export default function OrderDetails() {
         }
     }, [voucher]);
 
-    const handleSubmitForm = (e) => {
+    const handleSubmitForm = (e, nameInput, addressInput, emailInput) => {
         e.preventDefault();
+
+        const client = {
+            name: nameInput.current.value,
+            email: emailInput.current.value,
+            address: addressInput.current.value
+        }
     }
 
     const handleAddVoucher = (input) => {
