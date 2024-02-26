@@ -16,7 +16,7 @@ export default function OrderDetails() {
     });
     const totalProductsCost = calculateItemsCost(productsInCart);
     const shippingCost = calculateShippingCost(productsInCart, totalProductsCost);
-    const discounts = calculateDiscountAmount(totalProductsCost);
+    const discounts = calculateDiscountAmount(totalProductsCost, voucher);
     const totalCost = calculateTotalCost(totalProductsCost, shippingCost, discounts);
 
     useEffect(() => {
@@ -26,12 +26,6 @@ export default function OrderDetails() {
             localStorage.setItem("voucher", JSON.stringify(""));
         }
     }, [voucher]);
-    
-
-    const calculateTotalOrderCost = () => {
-
-
-    }
 
     const handleSubmitForm = (e) => {
         e.preventDefault();

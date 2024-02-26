@@ -1,5 +1,8 @@
-const calculateDiscountAmount = (total) => {
-    const discountPercentage = 10;
+const calculateDiscountAmount = (total, voucher) => {
+    let discountPercentage = 0;
+    if(voucher === "CELEBRATE20") {
+        discountPercentage = 10;
+    }
     const discountAmount = (total * discountPercentage) / 100;
     return discountAmount.toFixed(2);
 }
