@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { addProductToCart, removeProductFromCart, removeAllFromCart } from "../../redux/cartSlice";
 import { getQuantityInCart } from "../../js/getQuantityInCart";

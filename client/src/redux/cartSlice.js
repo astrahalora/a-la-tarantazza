@@ -9,7 +9,6 @@ export const cartSlice = createSlice({
     initialState,
     reducers: {
         addProductToCart: (state, action) => {
-            console.log("here", action.payload)
             for (let i = 0; i < state.products.length; i++) {
                 if (state.products[i]._id === action.payload._id) {
                     if(state.products[i].quantity < action.payload.amount) {

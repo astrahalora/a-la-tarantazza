@@ -57,6 +57,7 @@ textarea {
     --medium: rgba(54, 47, 47, 0.9);
     --disabled: gray;
     --cart: rgb(236, 221, 170);
+    --success: rgb(48, 95, 48);
     --soft-border: 5px;
     --transition: all 0.3s ease;
 }
