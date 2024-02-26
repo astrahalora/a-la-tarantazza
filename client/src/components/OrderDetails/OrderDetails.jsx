@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
+import { calculateItemsCost, calculateDiscountAmount, calculateShippingCost, calculateTotalCost } from "../../js/calculating";
 import OrderForm from "./OrderForm/OrderForm";
 import Voucher from "./Voucher/Voucher";
 import "./OrderDetails.css";
@@ -13,6 +14,10 @@ export default function OrderDetails() {
         const storedVoucher = localStorage.getItem("voucher");
         return storedVoucher ? JSON.parse(storedVoucher) : "";
     });
+    const totalProductsCost = calculateItemsCost(productsInCart);
+    const shippingCost = calculateShippingCost(productsInCart, totalProductsCost);
+    const discounts = calculateDiscountAmount(totalProductsCost);
+    const totalCost = calculateTotalCost(totalProductsCost, shippingCost, discounts);
 
     useEffect(() => {
         if(productsInCart.length > 0) {
@@ -20,7 +25,13 @@ export default function OrderDetails() {
         } else {
             localStorage.setItem("voucher", JSON.stringify(""));
         }
-    }, [voucher, productsInCart]);
+    }, [voucher]);
+    
+
+    const calculateTotalOrderCost = () => {
+
+
+    }
 
     const handleSubmitForm = (e) => {
         e.preventDefault();
@@ -36,7 +47,11 @@ export default function OrderDetails() {
 
     return (
         <div className="order-details">
-            <Summary />
+            <Summary 
+                productsTotal={totalProductsCost}
+                shipping={shippingCost}
+                discount={discounts}
+                total={totalCost} />
             <Voucher addVoucher={handleAddVoucher} voucher={voucher}/>
             <OrderForm handleSubmit={handleSubmitForm} />
         </div>

@@ -2,3 +2,16 @@
     text-align: center;
     margin-bottom: 0.5rem;
 }
+
+.price-item {
+    display: flex;
+    justify-content: space-between;
+}
+
+.extra-cost {
+    color: var(--primary-accent);
+}
+
+.less-cost {
+    color: var(--success);
+}
