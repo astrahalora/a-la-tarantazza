@@ -13,7 +13,7 @@ export default function Product({ product, showDetails, addToCart }) {
                 </button>
                 <div className="product-info">
                     <p className="price">
-                        {product[0].amount > 0 ? `$` + product[0].price : "Unavailable"}
+                        {product[0].amount > 0 ? `$` + product[0].price.toFixed(2) : "Unavailable"}
                     </p>
                     {product[0].amount > 0 ? (
                         <img src={cart} alt="Cart" className="buy-cart" onClick={addToCart} />

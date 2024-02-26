@@ -9,6 +9,7 @@ export const cartSlice = createSlice({
     initialState,
     reducers: {
         addProductToCart: (state, action) => {
+            console.log("here", action.payload)
             for (let i = 0; i < state.products.length; i++) {
                 if (state.products[i]._id === action.payload._id) {
                     if(state.products[i].quantity < action.payload.amount) {
@@ -41,10 +42,14 @@ export const cartSlice = createSlice({
                     }
                 }
             }
+        },
+        removeAllFromCart: (state, action) => {
+            state.products = state.products.filter(item => item._id !== action.payload._id);
+            localStorage.setItem("cart", JSON.stringify(state.products));
         }
     }
 })
 
-export const { addProductToCart, removeProductFromCart } = cartSlice.actions;
+export const { addProductToCart, removeProductFromCart, removeAllFromCart } = cartSlice.actions;
 
 export default cartSlice.reducer;
