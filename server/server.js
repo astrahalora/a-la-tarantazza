@@ -3,8 +3,9 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 
-const ProductModel = require("./db/product.model");
-const FavoriteModel = require("./db/favorite.model");
+const Product = require("./db/product.model");
+const Favorite= require("./db/favorite.model");
+const Order = require("./db/order.model");
 
 const { MONGO_URL, PORT = 8080 } = process.env;
 
@@ -35,7 +36,7 @@ const serverErrorHandler = (res, err) => {
 app.route("/products")
     .get(async (req, res) => {
         try {
-            const products = await ProductModel.find();
+            const products = await Product.find();
             return res.json(products);
         } catch (err) {
             serverErrorHandler(res, err);
@@ -45,14 +46,14 @@ app.route("/products")
 app.route("/favorites")
     .get(async (req, res) => {
         try {
-            const favorites = await FavoriteModel.find();
+            const favorites = await Favorite.find();
             return res.json(favorites);
         } catch (err) {
             serverErrorHandler(res, err);
         }
     })
     .post(async (req, res) => {
-        const newFavorite = new FavoriteModel(req.body);
+        const newFavorite = new Favorite(req.body);
         try {
             const favorite = await newFavorite.save();
         } catch (err) {
@@ -65,7 +66,7 @@ app.route("/favorites/:id")
         const favoriteId = req.params.id;
 
         try {
-            const favorite = await FavoriteModel.findOneAndDelete({_id: favoriteId});
+            const favorite = await Favorite.findOneAndDelete({_id: favoriteId});
 
             if(!favorite) {
                 return res.status(404).json({message: "Favorite not found"});
@@ -73,6 +74,24 @@ app.route("/favorites/:id")
             return res.status(200).json({massage: "Favorite deleted"});
         } catch (err) {
             serverErrorHandler(res, err);
+        }
+    })
+
+app.route("/orders")
+    .get(async (req, res) => {
+        try {
+            const orders = await Order.find();
+            return res.json(orders);
+        } catch (err) {
+            serverErrorHandler(res, err);
+        }
+    })
+    .post(async (req, res) => {
+        const newOrder = new Order(req.body);
+        try {
+            const order = await newOrder.save();
+        } catch (err) {
+            return res.status(400).json({ message: err.message });
         }
     })
 

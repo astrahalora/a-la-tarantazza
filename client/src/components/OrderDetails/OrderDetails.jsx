@@ -30,10 +30,14 @@ export default function OrderDetails() {
     const handleSubmitForm = (e, nameInput, addressInput, emailInput) => {
         e.preventDefault();
 
-        const client = {
-            name: nameInput.current.value,
-            email: emailInput.current.value,
-            address: addressInput.current.value
+        const order = {
+            client: {
+                name: nameInput.current.value,
+                email: emailInput.current.value,
+                address: addressInput.current.value
+            },
+            products: productsInCart,
+            totalCost: totalCost
         }
     }
 
