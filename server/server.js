@@ -43,7 +43,7 @@ app.route("/products")
         }
     });
 
-    app.route("/products/:id")
+app.route("/products/:id")
     .patch(async (req, res) => {
         const productId = req.params.id;
 
@@ -64,7 +64,6 @@ app.route("/products")
         }
     });
 
-
 app.route("/favorites")
     .get(async (req, res) => {
         try {
@@ -81,7 +80,7 @@ app.route("/favorites")
         } catch (err) {
             return res.status(400).json({ message: err.message });
         }
-    })
+    });
 
 app.route("/favorites/:id")
     .delete(async (req, res) => {
@@ -97,7 +96,7 @@ app.route("/favorites/:id")
         } catch (err) {
             serverErrorHandler(res, err);
         }
-    })
+    });
 
 app.route("/orders")
     .get(async (req, res) => {
@@ -115,7 +114,7 @@ app.route("/orders")
         } catch (err) {
             return res.status(400).json({ message: err.message });
         }
-    })
+    });
 
 const main = async () => {
     await mongoose.connect(MONGO_URL);
