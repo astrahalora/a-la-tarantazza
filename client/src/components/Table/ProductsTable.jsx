@@ -2,17 +2,29 @@ import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import "./ProductsTable.css";
+import Loading from "../../pages/Loading/Loading";
+import ErrorPage from "../../pages/Error/ErrorPage";
+import TableProduct from "./TableProduct/TableProduct";
+import Pagination from "../Pagination/Pagination";
 
-export default function Table() {
+export default function ProductsTable() {
     const productsState = useSelector(state => state.productList);
     const [products, setProducts] = useState([]);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [productsPerPage, setProductsPerPage] = useState(10);
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
     useEffect(() => {
-        // Filter products when the products state changes
         setProducts(productsState.products);
     }, [productsState.products]);
+
+    if (productsState.loading) return <Loading />;
+    if (productsState.error) return <ErrorPage />;
+
+    const indexOfLastProduct = currentPage * productsPerPage;
+    const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+    const currentProducts = products.slice(indexOfFirstProduct, indexOfLastProduct);
 
     return (
         <table className="products-table">
@@ -22,12 +34,21 @@ export default function Table() {
                     <th>Name</th>
                     <th>Price</th>
                     <th>Amount</th>
-                    <th>Detele</th>
+                    <th>Delete</th>
                 </tr>
             </thead>
             <tbody>
-
+                {currentProducts.map((product, i) => (
+                    <TableProduct key={i} product={[product]} />
+                ))}
             </tbody>
+            <tfoot>
+                <tr>
+                    <td colSpan="5">
+                        <Pagination productsPerPage={productsPerPage} totalProducts={products.length} />
+                    </td>
+                </tr>
+            </tfoot>
         </table>
     )
 }

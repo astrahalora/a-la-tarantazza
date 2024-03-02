@@ -1,16 +1,13 @@
 import "./Admin.css";
-import Table from "../../components/Table/ProductsTable";
+import ProductsTable from "../../components/Table/ProductsTable";
+import AddButton from "../../components/Table/AddButton/AddButton";
 
 export default function Admin() {
 
     return (
         <div className="admin">
-            <button 
-            type="button"
-            className="base-btn add-new-product-btn">
-                Add New Product
-            </button>
-            <Table />
+            <AddButton />
+            <ProductsTable />
         </div>
     )
 }
