@@ -43,6 +43,28 @@ app.route("/products")
         }
     });
 
+    app.route("/products/:id")
+    .patch(async (req, res) => {
+        const productId = req.params.id;
+
+        try {
+            const updatedProduct = await Product.findByIdAndUpdate(
+                productId,
+                { $set: req.body },
+                { new: true }
+            );
+
+            if (!updatedProduct) {
+                return res.status(404).json({ error: "Product not found" });
+            }
+
+            return res.json(updatedProduct);
+        } catch (err) {
+            serverErrorHandler(res, err);
+        }
+    });
+
+
 app.route("/favorites")
     .get(async (req, res) => {
         try {
