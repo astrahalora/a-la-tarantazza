@@ -13,6 +13,7 @@ import Menu from "./pages/Menu/Menu";
 import PageNotFound from "./pages/PageNotFound/PageNotFound";
 import Favorites from "./pages/Favorites/Favorites";
 import ProductDetails from "./pages/ProductDetails/ProductDetails";
+import OrderComplete from "./pages/OrderComplete/OrderComplete";
 
 export const router = createBrowserRouter([
     {
@@ -63,6 +64,10 @@ export const router = createBrowserRouter([
             {
                 path: "/cart",
                 element: <Cart />
+            },
+            {
+                path: "/order-complete",
+                element: <OrderComplete />
             },
             {
                 path: "*",

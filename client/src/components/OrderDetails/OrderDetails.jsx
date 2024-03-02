@@ -1,6 +1,10 @@
 import { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { calculateItemsCost, calculateDiscountAmount, calculateShippingCost, calculateTotalCost } from "../../js/calculating";
+import { postContent } from "../../js/postContent";
+import { clearCart } from "../../redux/cartSlice";
+import { ordersUrl } from "../../js/endpoints";
 import "./OrderDetails.css";
 import OrderForm from "./OrderForm/OrderForm";
 import Voucher from "./Voucher/Voucher";
@@ -18,6 +22,8 @@ export default function OrderDetails() {
     const shippingCost = calculateShippingCost(productsInCart, totalProductsCost);
     const discounts = calculateDiscountAmount(totalProductsCost, voucher);
     const totalCost = calculateTotalCost(totalProductsCost, shippingCost, discounts);
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     useEffect(() => {
         if(productsInCart.length > 0) {
@@ -39,6 +45,10 @@ export default function OrderDetails() {
             products: productsInCart,
             totalCost: totalCost
         }
+
+        postContent(order, ordersUrl);
+        dispatch(clearCart());
+        navigate("/order-complete");
     }
 
     const handleAddVoucher = (input) => {
