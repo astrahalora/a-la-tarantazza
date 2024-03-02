@@ -1,9 +1,11 @@
+import basket from "../../img/basket.webp";
 import "./OrderComplete.css";
 
 export default function OrderComplete() {
     return (
-        <div>
-            <h2>Order Complete!</h2>
+        <div className="order-complete">
+            <img src={basket} alt="Basket" className="order-basket-img" />
+            <h2>Your order has been sent!</h2>
         </div>
     )
 }
