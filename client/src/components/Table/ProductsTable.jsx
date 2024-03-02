@@ -26,6 +26,8 @@ export default function ProductsTable() {
     const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
     const currentProducts = products.slice(indexOfFirstProduct, indexOfLastProduct);
 
+    const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
     return (
         <table className="products-table">
             <thead>
@@ -45,7 +47,10 @@ export default function ProductsTable() {
             <tfoot>
                 <tr>
                     <td colSpan="5">
-                        <Pagination productsPerPage={productsPerPage} totalProducts={products.length} />
+                        <Pagination 
+                        productsPerPage={productsPerPage} 
+                        totalProducts={products.length}
+                        paginate={paginate} />
                     </td>
                 </tr>
             </tfoot>
