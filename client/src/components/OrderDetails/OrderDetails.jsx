@@ -48,6 +48,7 @@ export default function OrderDetails() {
 
         postContent(order, ordersUrl);
         dispatch(clearCart());
+        setVoucher("");
         navigate("/order-complete");
     }
 
