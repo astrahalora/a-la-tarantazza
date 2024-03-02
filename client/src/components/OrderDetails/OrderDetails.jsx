@@ -29,6 +29,7 @@ export default function OrderDetails() {
         if(productsInCart.length > 0) {
             localStorage.setItem("voucher", JSON.stringify(voucher));
         } else {
+            setVoucher("");
             localStorage.setItem("voucher", JSON.stringify(""));
         }
     }, [voucher]);
@@ -45,6 +46,8 @@ export default function OrderDetails() {
             products: productsInCart,
             totalCost: totalCost
         }
+
+        //TODO PATCH
 
         postContent(order, ordersUrl);
         dispatch(clearCart());
