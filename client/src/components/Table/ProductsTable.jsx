@@ -12,11 +12,12 @@ export default function ProductsTable() {
     const [products, setProducts] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const productsPerPage = 10;
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
 
     useEffect(() => {
-        setProducts(productsState.products);
+        const sortedProducts = [...productsState.products];
+        sortedProducts.sort((a, b) => a.name.localeCompare(b.name));
+
+        setProducts(sortedProducts);
     }, [productsState.products]);
 
     if (productsState.loading) return <Loading />;
