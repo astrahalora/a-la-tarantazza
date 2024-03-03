@@ -1,17 +1,24 @@
 import { useState, useRef } from "react";
+import { useDispatch } from "react-redux";
+import { patchContent } from "../../../js/patchContent";
+import { fetchProducts } from "../../../redux/productsSlice";
+import { productsUrl } from "../../../js/endpoints";
 import "./TableProduct.css";
 
 export default function TableProduct({ product }) {
     const productObj = product[0];
     const [updating, setUpdating] = useState(false);
     const nameRef = useRef(), priceRef = useRef(), amountRef = useRef();
-
-    const handleUpdate = () => {
-        setUpdating(true);
-    }
+    const dispatch = useDispatch();
 
     const handleSave = () => {
         setUpdating(false);
+        patchContent(productsUrl, productObj._id, {
+            name: nameRef.current.value,
+            price: priceRef.current.value,
+            amount: amountRef.current.value
+        })
+        .then(() => dispatch(fetchProducts()));
     }
 
     return (
@@ -75,7 +82,7 @@ export default function TableProduct({ product }) {
                         <button
                             type="button"
                             className="base-btn"
-                            onClick={handleUpdate}>
+                            onClick={() => setUpdating(true)}>
                             Update
                         </button>
                     </td>
