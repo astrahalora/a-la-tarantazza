@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 import "./ProductsTable.css";
 import Loading from "../../pages/Loading/Loading";
 import ErrorPage from "../../pages/Error/ErrorPage";
