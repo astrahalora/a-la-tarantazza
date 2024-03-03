@@ -1,14 +1,10 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useRef } from "react";
 import "./ProductCreator.css";
 
 export default function ProductCreator() {
     const [ingredients, setIngredients] = useState([]);
     const [allergens, setAllergens] = useState([]);
     const ingredientRef = useRef(), allergenRef = useRef();
-
-    useEffect(() => {
-
-    }, [ingredients, allergens]);
 
     const handleFormSubmit = (e) => {
         e.preventDefault();
@@ -33,14 +29,16 @@ export default function ProductCreator() {
                 <div className="list-div">
                     <div className="item-list">
                         <p>Ingredients: </p>
-                        {ingredients.length > 0 ? ingredients.map((ingredient, i) => (
-                            <p key={i}>
-                                {ingredient}
-                                <span onClick={() => setIngredients(prev => prev.filter((_, index) => index !== i))}>
-                                    X
-                                </span>
-                            </p>
-                        )) : null}
+                        <div className="listing">
+                            {ingredients.length > 0 ? ingredients.map((ingredient, i) => (
+                                <p key={i}>
+                                    {ingredient}
+                                    <span onClick={() => setIngredients(prev => prev.filter((_, index) => index !== i))}>
+                                        X
+                                    </span>
+                                </p>
+                            )) : null}
+                        </div>
                     </div>
                     <div className="adder-div">
                         <label htmlFor="ingredient">Ingredient: </label>
@@ -59,20 +57,22 @@ export default function ProductCreator() {
                                 Add
                             </button>
                         </div>
-                        
                     </div>
                 </div>
                 <div className="list-div">
                     <div className="item-list">
                         <p>Allergens: </p>
-                        {allergens.length > 0 ? allergens.map((allergen, i) => (
-                            <p key={i}>
-                                {allergen}
-                                <span onClick={() => setAllergens(prev => prev.filter((_, index) => index !== i))}>
-                                    X
-                                </span>
-                            </p>
-                        )) : null}
+                        <div className="listing">
+                            {allergens.length > 0 ? allergens.map((allergen, i) => (
+                                <p key={i}>
+                                    {allergen}
+                                    <span onClick={() => setAllergens(prev => prev.filter((_, index) => index !== i))}>
+                                        X
+                                    </span>
+                                </p>
+                            )) : null}
+                        </div>
+                        
                     </div>
                     <div className="adder-div">
                         <label htmlFor="alergen">Allergen: </label>
@@ -91,7 +91,6 @@ export default function ProductCreator() {
                                 Add
                             </button>
                         </div>
-                        
                     </div>
                 </div>
                 <div className="creator-div">
@@ -104,6 +103,5 @@ export default function ProductCreator() {
                 </div>
             </form>
         </div>
-
     )
 }

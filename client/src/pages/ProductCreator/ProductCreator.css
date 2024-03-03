@@ -41,12 +41,8 @@
     padding: 0.5rem;
 }
 
-.item-list p:first-of-type {
+.item-list > p {
     margin-bottom: 0.5rem;
-}
-
-.item-list p:not(:first-of-type):not(:last-of-type) {
-    margin-bottom: 1.1rem;
 }
 
 .item-list span {
@@ -56,6 +52,7 @@
     border-radius: var(--soft-border);
     font-size: 16px;
     font-weight: bold;
+    cursor: pointer;
 }
 
 .adder-div {
@@ -66,5 +63,17 @@
 
 .adder-div-div {
     width: 80%;
+}
+
+.listing {
+    display: flex;
+}
+
+.listing p {
+    margin-right: 0.5rem;
+}
+
+.listing p:not(:last-of-type)::after {
+    content: ",";
 }
 
