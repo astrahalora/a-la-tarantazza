@@ -31,7 +31,7 @@ export default function ProductCreator() {
                     <input type="text" name="imageUrl" placeholder="https://imageUrl" />
                 </div>
                 <div className="list-div">
-                    <div className="ingredient-list">
+                    <div className="item-list">
                         <p>Ingredients: </p>
                         {ingredients.length > 0 ? ingredients.map((ingredient, i) => (
                             <p key={i}>
@@ -44,23 +44,26 @@ export default function ProductCreator() {
                     </div>
                     <div className="adder-div">
                         <label htmlFor="ingredient">Ingredient: </label>
-                        <input type="text" name="ingredient" placeholder="All-Purpose Flour" ref={ingredientRef} />
-                        <button
-                            type="button"
-                            className="base-btn"
-                            onClick={() => {
-                                const newIngredient = ingredientRef.current.value.trim();
-                                if (newIngredient !== "") {
-                                    setIngredients(prev => [...prev, newIngredient]);
-                                    ingredientRef.current.value = "";
-                                }
-                            }}>
-                            Add
-                        </button>
+                        <div className="adder-div-div">
+                            <input type="text" name="ingredient" placeholder="All-Purpose Flour" ref={ingredientRef} />
+                            <button
+                                type="button"
+                                className="base-btn"
+                                onClick={() => {
+                                    const newIngredient = ingredientRef.current.value.trim();
+                                    if (newIngredient !== "") {
+                                        setIngredients(prev => [...prev, newIngredient]);
+                                        ingredientRef.current.value = "";
+                                    }
+                                }}>
+                                Add
+                            </button>
+                        </div>
+                        
                     </div>
                 </div>
                 <div className="list-div">
-                    <div className="allergen-list">
+                    <div className="item-list">
                         <p>Allergens: </p>
                         {allergens.length > 0 ? allergens.map((allergen, i) => (
                             <p key={i}>
@@ -73,19 +76,22 @@ export default function ProductCreator() {
                     </div>
                     <div className="adder-div">
                         <label htmlFor="alergen">Allergen: </label>
-                        <input type="text" name="alergen" placeholder="Gluten" ref={allergenRef} />
-                        <button
-                            type="button"
-                            className="base-btn"
-                            onClick={() => {
-                                const newAllergen = allergenRef.current.value.trim();
-                                if (newAllergen !== "") {
-                                    setAllergens(prev => [...prev, newAllergen]);
-                                    allergenRef.current.value = "";
-                                }
-                            }}>
-                            Add
-                        </button>
+                        <div className="adder-div-div">
+                            <input type="text" name="alergen" placeholder="Gluten" ref={allergenRef} />
+                            <button
+                                type="button"
+                                className="base-btn"
+                                onClick={() => {
+                                    const newAllergen = allergenRef.current.value.trim();
+                                    if (newAllergen !== "") {
+                                        setAllergens(prev => [...prev, newAllergen]);
+                                        allergenRef.current.value = "";
+                                    }
+                                }}>
+                                Add
+                            </button>
+                        </div>
+                        
                     </div>
                 </div>
                 <div className="creator-div">
