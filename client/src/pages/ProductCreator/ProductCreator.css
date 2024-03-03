@@ -31,7 +31,7 @@
 .creator-div input, .adder-div-div input {
     background: var(--light);
     width: 80%;
-    padding: 0.7rem;
+    padding: 0.6rem;
     font-size: 20px;
     border-radius: var(--soft-border);
 }
@@ -75,5 +75,11 @@
 
 .listing p:not(:last-of-type)::after {
     content: ",";
+}
+
+.creator-submit {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
 }
 

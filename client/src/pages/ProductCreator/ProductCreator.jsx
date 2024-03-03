@@ -16,15 +16,15 @@ export default function ProductCreator() {
             <form onSubmit={handleFormSubmit} className="creator-form">
                 <div className="creator-div">
                     <label htmlFor="name">Name: </label>
-                    <input type="text" name="name" placeholder="Ginger Berry Pie" />
+                    <input type="text" name="name" placeholder="Ginger Berry Pie" required/>
                 </div>
                 <div className="creator-div">
                     <label htmlFor="type">Type: </label>
-                    <input type="text" name="type" placeholder="dessert" />
+                    <input type="text" name="type" placeholder="dessert" required/>
                 </div>
                 <div className="creator-div">
                     <label htmlFor="imageUrl">Image: </label>
-                    <input type="text" name="imageUrl" placeholder="https://imageUrl" />
+                    <input type="text" name="imageUrl" placeholder="https://imageUrl" required/>
                 </div>
                 <div className="list-div">
                     <div className="item-list">
@@ -95,11 +95,14 @@ export default function ProductCreator() {
                 </div>
                 <div className="creator-div">
                     <label htmlFor="price">Price: </label>
-                    <input type="number" name="price" placeholder="12.35" />
+                    <input type="number" name="price" placeholder="12.35" required/>
                 </div>
                 <div className="creator-div">
                     <label htmlFor="amount">Amount: </label>
-                    <input type="number" name="amount" placeholder="2" />
+                    <input type="number" name="amount" placeholder="2" required/>
+                </div>
+                <div className="creator-submit">
+                    <button type="submit" className="base-btn">Submit</button>
                 </div>
             </form>
         </div>
