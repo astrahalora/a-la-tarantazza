@@ -59,7 +59,6 @@ export default function OrderDetails() {
         .then(() => {
             // Use map to create an array of promises
             const patchPromises = productsInCart.map((product) => {
-                console.log(product, "patching")
                 return patchContent(productsUrl, product._id, {
                     amount: matchToProductInStock(product).amount - product.quantity
                 });
@@ -69,7 +68,6 @@ export default function OrderDetails() {
             return Promise.all(patchPromises);
         })
         .then(() => {
-            console.log("clear cart");
             dispatch(clearCart());
             setVoucher("");
             localStorage.setItem("voucher", JSON.stringify(""));
