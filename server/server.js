@@ -41,6 +41,15 @@ app.route("/products")
         } catch (err) {
             serverErrorHandler(res, err);
         }
+    })
+    .post(async (req, res) => {
+        try {
+            const newProduct = new Product(req.body);
+            const savedProduct = await newProduct.save();
+            return res.status(201).json(savedProduct);
+        } catch (err) {
+            return res.status(400).json({ message: err.message });
+        }
     });
 
 app.route("/products/:id")
@@ -74,9 +83,10 @@ app.route("/favorites")
         }
     })
     .post(async (req, res) => {
-        const newFavorite = new Favorite(req.body);
         try {
-            const favorite = await newFavorite.save();
+            const newFavorite = new Favorite(req.body);
+            const savedFavorite = await newFavorite.save();
+            return res.status(201).json(savedFavorite);
         } catch (err) {
             return res.status(400).json({ message: err.message });
         }
@@ -108,9 +118,10 @@ app.route("/orders")
         }
     })
     .post(async (req, res) => {
-        const newOrder = new Order(req.body);
         try {
-            const order = await newOrder.save();
+            const newOrder = new Order(req.body);
+            const savedOrder = await newOrder.save();
+            return res.status(201).json(savedOrder);
         } catch (err) {
             return res.status(400).json({ message: err.message });
         }
