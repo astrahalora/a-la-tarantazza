@@ -3,6 +3,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { calculateItemsCost, calculateDiscountAmount, calculateShippingCost, calculateTotalCost } from "../../js/calculating";
 import { postContent } from "../../js/postContent";
+import { patchContent } from "../../js/patchContent";
+import { productsUrl } from "../../js/endpoints";
 import { clearCart } from "../../redux/cartSlice";
 import { ordersUrl } from "../../js/endpoints";
 import "./OrderDetails.css";
@@ -14,6 +16,7 @@ const expectedVoucher = "CELEBRATE20";
 
 export default function OrderDetails() {
     const productsInCart = useSelector(state => state.cart.products);
+    const products = useSelector(state => state.productList.products);
     const [voucher, setVoucher] = useState(() => {
         const storedVoucher = localStorage.getItem("voucher");
         return storedVoucher ? JSON.parse(storedVoucher) : "";
@@ -34,6 +37,10 @@ export default function OrderDetails() {
         }
     }, [voucher]);
 
+    const matchToProductInStock = (productInCart) => {
+        return products.filter(product => product._id === productInCart._id)[0];
+    }
+
     const handleSubmitForm = (e, nameInput, addressInput, emailInput) => {
         e.preventDefault();
 
@@ -47,12 +54,28 @@ export default function OrderDetails() {
             totalCost: totalCost
         }
 
-        //TODO PATCH
-
-        postContent(order, ordersUrl);
-        dispatch(clearCart());
-        setVoucher("");
-        navigate("/order-complete");
+        postContent(order, ordersUrl)
+        .then(() => {
+            // Use map to create an array of promises
+            const patchPromises = productsInCart.map(async (product) => {
+                await patchContent(productsUrl, product._id, {
+                    amount: matchToProductInStock(product).amount - product.quantity
+                });
+            });
+    
+            // Wait for all patch promises to resolve
+            return Promise.all(patchPromises);
+        })
+        .then(() => {
+            dispatch(clearCart());
+            setVoucher("");
+            localStorage.setItem("voucher", JSON.stringify(""));
+            navigate("/order-complete");
+        })
+        .catch((error) => {
+            console.error("Error:", error);
+        });
+    
     }
 
     const handleAddVoucher = (input) => {
