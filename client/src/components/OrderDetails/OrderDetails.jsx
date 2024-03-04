@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { calculateItemsCost, calculateDiscountAmount, calculateShippingCost, calculateTotalCost } from "../../js/calculating";
+import { fetchProducts } from "../../redux/productsSlice";
 import { postContent } from "../../js/postContent";
 import { patchContent } from "../../js/patchContent";
 import { productsUrl } from "../../js/endpoints";
@@ -57,8 +58,9 @@ export default function OrderDetails() {
         postContent(order, ordersUrl)
         .then(() => {
             // Use map to create an array of promises
-            const patchPromises = productsInCart.map(async (product) => {
-                await patchContent(productsUrl, product._id, {
+            const patchPromises = productsInCart.map((product) => {
+                console.log(product, "patching")
+                return patchContent(productsUrl, product._id, {
                     amount: matchToProductInStock(product).amount - product.quantity
                 });
             });
@@ -67,15 +69,22 @@ export default function OrderDetails() {
             return Promise.all(patchPromises);
         })
         .then(() => {
+            console.log("clear cart");
             dispatch(clearCart());
             setVoucher("");
             localStorage.setItem("voucher", JSON.stringify(""));
+            
+            // Fetch products and wait for it to complete before navigating
+            return dispatch(fetchProducts());
+        })
+        .then(() => {
             navigate("/order-complete");
         })
         .catch((error) => {
-            console.error("Error:", error);
+            // Handle errors here
+            console.error('Error:', error);
         });
-    
+       
     }
 
     const handleAddVoucher = (input) => {
