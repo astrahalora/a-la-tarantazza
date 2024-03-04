@@ -71,6 +71,21 @@ app.route("/products/:id")
         } catch (err) {
             serverErrorHandler(res, err);
         }
+    })
+    .delete(async (req, res) => {
+        const productId = req.params.id;
+
+        try {
+            const deletedProduct = await Product.findByIdAndDelete(productId);
+
+            if (!deletedProduct) {
+                return res.status(404).json({ error: "Product not found" });
+            }
+
+            return res.json({ message: "Product deleted successfully" });
+        } catch (err) {
+            serverErrorHandler(res, err);
+        }
     });
 
 app.route("/favorites")

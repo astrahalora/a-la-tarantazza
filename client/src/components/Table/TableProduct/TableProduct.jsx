@@ -1,6 +1,7 @@
 import { useState, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { patchContent } from "../../../js/patchContent";
+import { deleteOneItem } from "../../../js/deleteOneItem";
 import { fetchProducts } from "../../../redux/productsSlice";
 import { productsUrl } from "../../../js/endpoints";
 import "./TableProduct.css";
@@ -20,6 +21,8 @@ export default function TableProduct({ product }) {
         })
         .then(() => dispatch(fetchProducts()));
     }
+
+    const handleDelete = () => deleteOneItem(productsUrl, productObj._id).then(() => dispatch(fetchProducts()));
 
     return (
         <tr className="table-product">
@@ -91,7 +94,8 @@ export default function TableProduct({ product }) {
             <td>
                 <button
                     type="button"
-                    className="base-btn table-prod-delete">
+                    className="base-btn table-prod-delete"
+                    onClick={handleDelete}>
                     Delete
                 </button>
             </td>
