@@ -142,6 +142,16 @@ app.route("/orders")
         }
     });
 
+app.route("/orders")
+    .get(async (req, res) => {
+        try {
+            const orders = await Order.find();
+            return res.json(orders);
+        } catch (err) {
+            serverErrorHandler(res, err);
+        }
+    })
+
 const main = async () => {
     await mongoose.connect(MONGO_URL);
 

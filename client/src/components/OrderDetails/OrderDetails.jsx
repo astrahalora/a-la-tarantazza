@@ -14,6 +14,9 @@ import Voucher from "./Voucher/Voucher";
 import Summary from "./Summary/Summary";
 
 const expectedVoucher = "CELEBRATE20";
+const matchToProductInStock = (productInCart, generalProducts) => {
+    return generalProducts.filter(product => product._id === productInCart._id)[0];
+}
 
 export default function OrderDetails() {
     const productsInCart = useSelector(state => state.cart.products);
@@ -38,10 +41,6 @@ export default function OrderDetails() {
         }
     }, [voucher]);
 
-    const matchToProductInStock = (productInCart) => {
-        return products.filter(product => product._id === productInCart._id)[0];
-    }
-
     const handleSubmitForm = (e, nameInput, addressInput, emailInput) => {
         e.preventDefault();
 
@@ -60,7 +59,7 @@ export default function OrderDetails() {
             // Use map to create an array of promises
             const patchPromises = productsInCart.map((product) => {
                 return patchContent(productsUrl, product._id, {
-                    amount: matchToProductInStock(product).amount - product.quantity
+                    amount: matchToProductInStock(product, products).amount - product.quantity
                 });
             });
     
@@ -79,7 +78,6 @@ export default function OrderDetails() {
             navigate("/order-complete");
         })
         .catch((error) => {
-            // Handle errors here
             console.error('Error:', error);
         });
        
