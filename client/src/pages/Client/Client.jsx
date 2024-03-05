@@ -12,6 +12,7 @@ export default function Client() {
 
     return (
         <div className="orders-frame">
+            <h2>Order History</h2>
             {data.map((item, i) => (
                 <OrderItem key={i} order={[item]} number={i}/>
             ))}
