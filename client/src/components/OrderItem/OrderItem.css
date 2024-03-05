@@ -1,0 +1,14 @@
+.order-item {
+    background: var(--medium);
+    width: 600px;
+    padding: 1rem;
+    margin: 0.2rem;
+    border-radius: var(--soft-border);
+    color: var(--light); 
+}
+
+.past-order-details-1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

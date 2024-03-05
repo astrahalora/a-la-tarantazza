@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { productsUrl } from "./endpoints";
+import { ordersUrl } from "./endpoints";
 
 export function useFetch() {
     const [data, setData] = useState();
@@ -13,7 +13,7 @@ export function useFetch() {
 
         const controller = new AbortController();
 
-        fetch(productsUrl, { signal: controller.signal })
+        fetch(ordersUrl, { signal: controller.signal })
         .then(res => {
             // if unsuccessful status, reject and throw an error
             if(res.status === 200) {
