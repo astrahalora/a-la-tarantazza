@@ -1,7 +1,7 @@
 import { dateFormatter } from "../../js/dateFormatter";
 import "./OrderItem.css";
 
-export default function OrderItem({ order, number }) {
+export default function OrderItem({ order, number, setOrder }) {
     const orderObj = order[0];
 
     return (
