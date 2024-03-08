@@ -1,6 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import productsReducer, { fetchProducts } from "./productsSlice";
 import productDetailsReducer from "./productDetailsSlice";
+import orderDetailsReducer from "./orderDetailsSlice";
 import cartReducer from "./cartSlice";
 import favoriteReducer, { fetchFavorites } from "./favoriteSlice";
 
@@ -9,7 +10,8 @@ const store = configureStore({
     productList: productsReducer,
     product: productDetailsReducer,
     cart: cartReducer,
-    favoriteList: favoriteReducer
+    favoriteList: favoriteReducer,
+    order: orderDetailsReducer
   }
 });
 

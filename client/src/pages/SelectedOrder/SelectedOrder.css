@@ -1,0 +1,6 @@
+.selected-order {
+    width: 90%;
+    max-width: 1200;
+    margin: 1rem auto;
+    background: var(--dark-lightest);
+}

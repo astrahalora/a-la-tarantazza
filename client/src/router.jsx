@@ -15,6 +15,7 @@ import Favorites from "./pages/Favorites/Favorites";
 import ProductDetails from "./pages/ProductDetails/ProductDetails";
 import OrderComplete from "./pages/OrderComplete/OrderComplete";
 import ProductCreator from "./pages/ProductCreator/ProductCreator";
+import SelectedOrder from "./pages/SelectedOrder/SelectedOrder";
 
 export const router = createBrowserRouter([
     {
@@ -69,6 +70,10 @@ export const router = createBrowserRouter([
             {
                 path: "/order-complete",
                 element: <OrderComplete />
+            },
+            {
+                path: "/selected-order",
+                element: <SelectedOrder />
             },
             {
                 path: "/create-product",
