@@ -7,6 +7,7 @@
     font-size: 18px;
     padding: 1rem;
     line-height: 1.2;
+    border-radius: var(--soft-border);
 }
 
 .top-details {
