@@ -32,12 +32,12 @@ export default function ProductsTable() {
         <table className="products-table">
             <thead>
                 <tr>
-                    <th>Product</th>
+                    <th className="table-detail">Product</th>
                     <th>Name</th>
                     <th>Price</th>
                     <th>Amount</th>
                     <th>Update</th>
-                    <th>Delete</th>
+                    <th className="table-detail-2">Delete</th>
                 </tr>
             </thead>
             <tbody>

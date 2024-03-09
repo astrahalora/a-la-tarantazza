@@ -4,11 +4,16 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    width: 90%;
+    width: 95%;
     max-width: 1200px;
     border-radius: var(--soft-border);
 }
 
+@media (max-width: 520px) {
+    .admin {
+        width: 100%;
+    }
+}
 
 
 

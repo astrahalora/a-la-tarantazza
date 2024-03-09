@@ -31,3 +31,19 @@
 .products-table tfoot {
     width: 100%;
 }
+
+@media (max-width: 700px) {
+    .table-detail {
+        display: none;
+    }
+}
+
+@media (max-width: 520px) {
+    .products-table {
+        font-size: 17px;
+    }
+
+    .table-detail-2 {
+        display: none;
+    }
+}

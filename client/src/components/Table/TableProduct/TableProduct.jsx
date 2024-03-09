@@ -26,7 +26,7 @@ export default function TableProduct({ product }) {
 
     return (
         <tr className="table-product">
-            <td>
+            <td className="table-detail">
                 <img src={productObj.imageUrl} alt={productObj.name} className="table-product-img" />
             </td>
             {updating ? (
@@ -91,7 +91,7 @@ export default function TableProduct({ product }) {
                     </td>
                 </>
             )}
-            <td>
+            <td className="table-detail-2">
                 <button
                     type="button"
                     className="base-btn table-prod-delete"
