@@ -12,7 +12,7 @@ export default function OrderItem({ order, number, setOrder }) {
             </div>
             <div className="line-div"></div>
             <div className="past-order-details">
-                <p>Total: ${orderObj.totalCost}</p>
+                <p className="cost-p">Total: ${orderObj.totalCost}</p>
                 <button 
                 type="button" 
                 className="base-btn"

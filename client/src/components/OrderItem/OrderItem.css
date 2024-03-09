@@ -19,3 +19,19 @@
     background: var(--dark);
     margin: 1rem 0;
 }
+
+@media (max-width: 690px) {
+    .order-item {
+        width: 100%;
+    }
+}
+
+@media (max-width: 470px) {
+    .past-order-details {
+        flex-direction: column;
+    }
+
+    .past-order-details h3, .cost-p {
+        margin-bottom: 0.5rem;
+    }
+}
