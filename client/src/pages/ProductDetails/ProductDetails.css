@@ -92,3 +92,33 @@
     margin-left: 0.7rem;
     width: 35px;
 }
+
+@media (max-width: 860px) {
+    .product-details {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .details-2 {
+        align-items: center;
+    }
+}
+
+@media (max-width: 500px) {
+    .detail-img {
+        width: 250px;
+    }
+}
+
+@media (max-width: 350px) {
+    .detail-img {
+        width: 200px;
+    }
+}
+
+@media (max-width: 300px) {
+    .product-details-frame {
+        width: 100%;
+        margin: 0.5rem auto;
+    }
+}
