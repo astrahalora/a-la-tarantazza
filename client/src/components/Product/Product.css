@@ -58,3 +58,25 @@
 .price {
     font-size: 19px;
 }
+
+@media (max-width: 500px) {
+    .product {
+        width: 95%;
+    }
+
+    .product > img {
+        width: 150px;
+        height: 150px;
+        margin: auto;
+    }
+}
+
+@media (max-width: 370px) {
+    .product > div {
+        width: 100%;
+    }
+    
+    .product > img {
+        display: none;
+    }
+}

@@ -7,19 +7,21 @@ export default function Filter({ allergens, filter, search }) {
 
     return (
         <div className="filter">
-            <h3>Remove all with: </h3>
-            <select 
-                name="filter-out-allergen"
-                title="Filter out by allergen" 
-                className="filter-out-allergen"
-                onChange={() => filter(inputElement, selectElement)}
-                ref={selectElement}
-            >
-                <option>-- See All --</option>
-                {allergens.map((allergen, i) => (
-                    <option key={i}>{allergen}</option>
-                ))}
-            </select>
+            <div className="selector">
+                <h3>Remove all with: </h3>
+                <select 
+                    name="filter-out-allergen"
+                    title="Filter out by allergen" 
+                    className="filter-out-allergen"
+                    onChange={() => filter(inputElement, selectElement)}
+                    ref={selectElement}
+                >
+                    <option>-- See All --</option>
+                    {allergens.map((allergen, i) => (
+                        <option key={i}>{allergen}</option>
+                    ))}
+                </select>
+            </div>
             <input
                 type="search"
                 name="search"
