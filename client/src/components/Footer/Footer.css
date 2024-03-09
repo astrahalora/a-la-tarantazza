@@ -13,6 +13,12 @@
     margin-right: 1.5rem;
 }
 
+@media (max-width: 800px) {
+    .large-logo-img {
+        display: none;
+    }
+}
+
 .extras {
     display: flex;
     padding-top: 1.5rem;
