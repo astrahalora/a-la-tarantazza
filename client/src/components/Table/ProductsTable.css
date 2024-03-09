@@ -38,7 +38,7 @@
     }
 }
 
-@media (max-width: 520px) {
+@media (max-width: 540px) {
     .products-table {
         font-size: 17px;
     }

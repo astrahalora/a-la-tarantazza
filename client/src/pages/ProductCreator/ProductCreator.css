@@ -2,7 +2,7 @@
     margin: 1rem auto;
     display: flex;
     flex-direction: column;
-    width: 90%;
+    width: 95%;
     max-width: 650px;
 }
 
@@ -85,3 +85,26 @@
     margin-top: 1rem;
 }
 
+@media (max-width: 670px) {
+    .creator-div, .adder-div {
+        flex-direction: column;
+    }
+
+    .creator-div label, .adder-div label {
+        margin-bottom: 0.2rem;
+    }
+
+    .creator-div input, .adder-div-div {
+        width: 95%;
+    }
+}
+
+@media (max-width: 460px) {
+    .creator-div input, .adder-div-div {
+        width: 100%;
+    }
+
+    .creator-form {
+        padding: 1rem;
+    }
+}
