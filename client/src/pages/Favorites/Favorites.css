@@ -18,3 +18,9 @@
     justify-content: center;
     flex-wrap: wrap;
 }
+
+@media (max-width: 330px) {
+    .favorites-bar {
+        flex-direction: column;
+    }
+}

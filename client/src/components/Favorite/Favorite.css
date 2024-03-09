@@ -47,3 +47,10 @@
 .favorite-2 > div:nth-child(3) {
     margin-top: 1rem;
 }
+
+@media (max-width: 500px) {
+    .favorite {
+        flex-direction: column;
+        width: 95%;
+    }
+}
