@@ -14,4 +14,13 @@
     width: 450px;
 }
 
+@media (max-width: 470px) {
+    .order-details {
+        width: 98%;
+    }
+    
+    .order-details, .order-summary, .voucher {
+        width: 100%;
+    }
+}
 

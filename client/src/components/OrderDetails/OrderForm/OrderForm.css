@@ -29,3 +29,9 @@
     border-radius: var(--soft-border);
     width: 80%;
 }
+
+@media (max-width: 470px) {
+    .client-details-1, .client-details-2, .client-details-3 {
+        flex-direction: column;
+    }
+}

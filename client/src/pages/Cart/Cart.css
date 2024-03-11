@@ -29,3 +29,15 @@
     align-items: center;
 }
 
+@media (max-width: 931px) {
+    .products-in-cart {
+        margin-bottom: 0.5rem;
+    }
+}
+
+@media (max-width:470px) {
+    .products-in-cart {
+        width: 98%;
+    }
+}
+

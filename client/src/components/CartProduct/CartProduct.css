@@ -72,3 +72,13 @@
 .cart-bow {
     height: 35px;
 }
+
+@media (max-width: 380px) {
+    .cp-img {
+        width: 60px;
+    }
+
+    .cart-bow {
+        display: none;
+    }
+}
