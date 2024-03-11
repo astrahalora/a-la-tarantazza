@@ -18,7 +18,7 @@ export default function SelectedOrder() {
             </div>
             <div className="product-listing">
                 {orderDetails[0].products.map((item, i) => (
-                    <div className="order-product">
+                    <div key={i} className="order-product">
                         <div className="pd1" key={i}>
                             <img src={item.imageUrl} alt={item.name} className="order-pic-details"/>
                             <p>{item.name}</p>

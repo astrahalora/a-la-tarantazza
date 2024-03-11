@@ -57,3 +57,29 @@
     justify-content: end;
     padding: 2rem;
 }
+
+@media (max-width: 550px) {
+    .selected-order {
+        padding: 0.5rem; 
+    }
+
+    .order-pic-details {
+        width: 60px;
+    }
+
+    .product-listing {
+        padding: 0;
+    }
+}
+
+@media (max-width: 460px) {
+    .order-product {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .selected-order {
+        width: 95%;
+    }
+}
