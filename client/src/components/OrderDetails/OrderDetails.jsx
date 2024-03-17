@@ -44,6 +44,8 @@ export default function OrderDetails() {
     const handleSubmitForm = (e, nameInput, addressInput, emailInput) => {
         e.preventDefault();
 
+        if(productsInCart.length === 0) return;
+
         const order = {
             client: {
                 name: nameInput.current.value,
