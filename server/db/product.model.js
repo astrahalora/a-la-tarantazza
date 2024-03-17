@@ -4,7 +4,10 @@ const { Schema } = mongoose;
 
 const ProductSchema = new Schema({
     name: String,
-    type: String,
+    type: {
+        type: String,
+        lowercase: true
+    },
     imageUrl: String,
     ingredients: [String],
     alergens: [String],

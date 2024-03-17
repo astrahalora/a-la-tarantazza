@@ -65,7 +65,7 @@ export default function ProductCreator() {
                     <div className="adder-div">
                         <label htmlFor="ingredient">Ingredient: </label>
                         <div className="adder-div-div">
-                            <input type="text" name="ingredient" placeholder="All-Purpose Flour" ref={ingredientRef} />
+                            <input type="text" name="ingredient" placeholder="All-purpose flour" ref={ingredientRef} />
                             <button
                                 type="button"
                                 className="base-btn"

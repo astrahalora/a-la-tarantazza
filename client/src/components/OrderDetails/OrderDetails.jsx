@@ -39,7 +39,7 @@ export default function OrderDetails() {
             setVoucher("");
             localStorage.setItem("voucher", JSON.stringify(""));
         }
-    }, [voucher]);
+    }, [voucher, productsInCart.length]);
 
     const handleSubmitForm = (e, nameInput, addressInput, emailInput) => {
         e.preventDefault();
