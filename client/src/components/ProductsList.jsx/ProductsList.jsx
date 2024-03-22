@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { setProduct } from "../../redux/productDetailsSlice";
@@ -10,12 +10,14 @@ import ErrorPage from "../../pages/Error/ErrorPage";
 import Product from "../../components/Product/Product";
 import Filter from "../../components/Filter/Filter";
 import "./ProductsList.css";
+import AddedProduct from "../AddedProduct/AddedProduct";
 
-export default function ProductsList( { productType }) {
+export default function ProductsList({ productType }) {
     const productsState = useSelector(state => state.productList);
     const [data, setData] = useState([]);
     const [filteredProducts, setFilteredProducts] = useState([]);
     const [products, setProducts] = useState([]);
+    const [showAddedProduct, setShowAddedProduct] = useState(false);
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -25,7 +27,6 @@ export default function ProductsList( { productType }) {
     }
 
     useEffect(() => {
-        // Filter products when the products state changes
         setData(filterByType(productsState.products, productType));
         setFilteredProducts(filterByType(productsState.products, productType));
         setProducts(filterByType(productsState.products, productType));
@@ -40,7 +41,7 @@ export default function ProductsList( { productType }) {
         setFilteredProducts(data);
         setProducts(data);
 
-        if(optionName === "-- See All --") return;
+        if (optionName === "-- See All --") return;
         setFilteredProducts(prev => filterOutByString(prev, optionName));
         setProducts(prev => filterOutByString(prev, optionName));
     }
@@ -51,22 +52,32 @@ export default function ProductsList( { productType }) {
         setProducts(prev => filterByPhrase(prev, searchPhrase));
     };
 
+    const handleAddToCart = (product) => {
+        dispatch(addProductToCart(product));
+        setShowAddedProduct(true); 
+        setTimeout(() => {
+            setShowAddedProduct(false); 
+        }, 3000);
+    }
+
     return (
         <section className="product-list">
-            <Filter 
+            <Filter
                 allergens={getAllergenList(data)}
                 filter={filterByAllergen}
                 search={searchByName}
-                 />
+            />
             <div className="listed-products">
-            {products.map((product) => (
-                <Product
-                    key={product._id}
-                    product={[product]}
-                    showDetails={() => showProductDetails(product)}
-                    addToCart={() => dispatch(addProductToCart(product))} />
-            ))}
+                {products.map((product) => (
+                    <Product
+                        key={product._id}
+                        product={[product]}
+                        showDetails={() => showProductDetails(product)}
+                        addToCart={() => handleAddToCart(product)}
+                    />
+                ))}
             </div>
+            <AddedProduct show={showAddedProduct} />
         </section>
     );
 }

@@ -29,6 +29,7 @@ export default function OrderDetails() {
     const shippingCost = calculateShippingCost(productsInCart, totalProductsCost);
     const discounts = calculateDiscountAmount(totalProductsCost, voucher);
     const totalCost = calculateTotalCost(totalProductsCost, shippingCost, discounts);
+    //TODO ordering state
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
