@@ -14,12 +14,14 @@ import unavailableCart from "../../img/shopping_cart_unavailable.png";
 import "./ProductDetails.css";
 import Loading from "../Loading/Loading";
 import ErrorPage from "../Error/ErrorPage";
+import AddedProduct from "../../components/AddedProduct/AddedProduct";
 
 export default function ProductDetails() {
     const detailsState = useSelector(state => state.product.details);
     const favoritesState = useSelector(state => state.favoriteList);
     const productsInCart = useSelector(state => state.cart.products);
     const [favorites, setFavorites] = useState([]);
+    const [showAddedProduct, setShowAddedProduct] = useState(false);
 
     const productToDisplay = detailsState[0];
     const productName = detailsState[0].name;
@@ -32,6 +34,24 @@ export default function ProductDetails() {
 
     if(favoritesState.loading) return <Loading />;
     if(favoritesState.error) return <ErrorPage />;
+
+    const productAmountGreaterThanProductQuantity = () => {
+        const cartProduct = productsInCart.filter(item => item.name === productToDisplay.name);
+        if(cartProduct[0]) {
+            return productToDisplay.amount > cartProduct[0].quantity;
+        }
+        return true;
+    }
+
+    const handleAddToCart = (product) => {
+        if(productAmountGreaterThanProductQuantity()) {
+            dispatch(addProductToCart(product));
+            setShowAddedProduct(true); 
+            setTimeout(() => {
+                setShowAddedProduct(false); 
+            }, 3000);
+        }
+    }
     
     return (
         <div className="product-details-frame">
@@ -80,7 +100,7 @@ export default function ProductDetails() {
                                 <button 
                                     type="button" 
                                     className="increment-btn" 
-                                    onClick={() => dispatch(addProductToCart(productToDisplay))}
+                                    onClick={() => handleAddToCart(productToDisplay)}
                                     disabled={inStock === 0}>
                                     +
                                 </button>
@@ -110,6 +130,7 @@ export default function ProductDetails() {
                 </div>
             ) : null}
             </>
+            <AddedProduct show={showAddedProduct} />
         </div>
     )
 }
