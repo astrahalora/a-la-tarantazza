@@ -19,6 +19,13 @@ Fully responsive MERN project (restaurant with order and product management) ini
 - MongoDB (NoSQL database program)
 - CSS (for styling)
 
+# Features
+
+## About Page
+
+- image slider that cycles through banners, featuring the next one every 10 seconds
+- banners can be selected through circular buttons and also lateral arrows 
+
 # Setup
 
 ## Server side
