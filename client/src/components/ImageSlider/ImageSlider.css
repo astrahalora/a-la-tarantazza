@@ -69,3 +69,9 @@
 .control-btns button img {
     width: 15px;
 }
+
+@media (max-width: 400px) {
+    .control-btns {
+        bottom: 0.2rem;
+    }
+}
