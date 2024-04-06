@@ -16,7 +16,6 @@ export default function Client() {
     if (isError) return <ErrorPage />
 
     const handleSetOrderDetails = (order) => {
-        console.log(order)
         dispatch(setOrder(order));
         navigate("/selected-order");
     }
