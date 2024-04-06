@@ -1,6 +1,6 @@
 # About
 
-Fully reponsive MERN project initialized with Vite, complete with:
+Fully reponsive MERN project (restaurant with order and product management) initialized with Vite, complete with:
 
 - custom designed images 
 - easy navigation with react-router-dom
