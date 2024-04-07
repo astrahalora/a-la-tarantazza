@@ -38,6 +38,7 @@ Fully responsive MERN project (restaurant with order and product management) ini
 
 - product pages with filter by excluding allergen of choice and search by name
 - search performed through filtered products, not all, if allergen filter applied
+- allergen dropdown list based on products currently displayed on page
 - can add to cart from this view if product is in stock
 - has button to access view of product details
 
@@ -59,6 +60,15 @@ Fully responsive MERN project (restaurant with order and product management) ini
 - favorites can be sorted by name in ascending or descending order
 
 ![favorites](https://images2.imgbox.com/75/8b/WrJFtu3u_o.jpg)
+
+## Admin
+
+- listing of all products with pagination 
+- add new product button to make a new product for the database
+- update button to change the basic details of existing products
+- delete button to remove the product from the database
+
+![admin](https://images2.imgbox.com/7d/90/AcE6P5R4_o.jpg)
 
 # Setup
 
