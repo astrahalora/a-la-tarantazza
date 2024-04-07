@@ -26,6 +26,8 @@ Fully responsive MERN project (restaurant with order and product management) ini
 - image slider that cycles through banners, featuring the next one every 10 seconds
 - banners can be selected through circular buttons and also lateral arrows 
 
+![banner](https://images2.imgbox.com/f1/41/cwdKbO0J_o.jpg)
+
 # Setup
 
 ## Server side
