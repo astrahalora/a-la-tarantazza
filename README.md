@@ -95,6 +95,28 @@ Fully responsive MERN project (restaurant with order and product management) ini
 
 ![order details](https://images2.imgbox.com/51/4e/5I05uNBW_o.jpg)
 
+## Cart
+
+- can view a list of products in cart
+- can add, remove products from cart either one by one or a whole batch 
+- can view order summary
+- variable shipping cost, $20 if products cost is below $100 and free if above
+- can add a voucher 
+- has a form for client details 
+- order now button that places the order
+
+![cart](https://images2.imgbox.com/e9/62/ttmLfd6G_o.jpg)
+
+### Order Completed
+
+![order completed](https://images2.imgbox.com/ad/e5/UBvWKAbg_o.jpg)
+
+## Error, Page Missing
+
+![error message](https://images2.imgbox.com/23/c7/6sa9V5sE_o.jpg)
+
+![page missing](https://images2.imgbox.com/a5/bc/ZhXl2LBV_o.jpg)
+
 # Setup
 
 ## Server side
