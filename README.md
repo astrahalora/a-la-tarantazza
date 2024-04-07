@@ -38,8 +38,18 @@ Fully responsive MERN project (restaurant with order and product management) ini
 
 - product pages with filter by excluding allergen of choice and search by name
 - search performed through filtered products, not all, if allergen filter applied
+- can add to cart from this view if product is in stock
 
 ![products](https://images2.imgbox.com/13/81/zV7lsaoe_o.jpg)
+
+## Product Details
+
+- can see product details
+- can add and remove products from cart 
+- can only add up to available stock
+- can add product to favorites
+
+![product details](https://images2.imgbox.com/72/dc/LBqoCAog_o.jpg)
 
 # Setup
 
