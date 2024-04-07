@@ -9,7 +9,7 @@ Fully responsive MERN project (restaurant with order and product management) ini
 - MongoDB server connection for data
 - loading, error, 404 missing pages
 
-![A La Tarantazza main page](https://images2.imgbox.com/a8/7c/koSqdu5J_o.jpg)
+![A La Tarantazza main page](https://images2.imgbox.com/8e/89/gj9EAKRf_o.jpg)
 
 # Technologies 
 
@@ -94,4 +94,4 @@ You can CTRL + click on the link or copy + paste it in your browser.
 - bow icon from flaticon by Nur syifa fauziah
 - Quote icon created by Icon Mela - Flaticon
 - Heart icon created by Chanut - Flaticon
-- LeonardoAi created base product images, image slider banners, error & loading & page missing images
+- LeonardoAi created base product images, image slider banners, error & loading & page missing & order completed images
