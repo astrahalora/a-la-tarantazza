@@ -117,6 +117,12 @@ Fully responsive MERN project (restaurant with order and product management) ini
 
 ![page missing](https://images2.imgbox.com/a5/bc/ZhXl2LBV_o.jpg)
 
+## Some Mobile Views
+
+![mobile view 1](https://images2.imgbox.com/65/ee/JeD37sfD_o.jpg)
+
+![mobile view 2](https://images2.imgbox.com/4e/8e/M7ZwXyJ7_o.jpg)
+
 # Setup
 
 ## Server side
