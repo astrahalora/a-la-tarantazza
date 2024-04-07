@@ -76,6 +76,13 @@ Fully responsive MERN project (restaurant with order and product management) ini
 
 ![add new product](https://images2.imgbox.com/63/3a/iCuuvDXS_o.jpg)
 
+### Add New Product
+
+- can input the details for a new product
+- submitting it returns you to the full admin product list with the new product included
+
+![create new product](https://images2.imgbox.com/fc/be/ufoFmfi1_o.jpg)
+
 # Setup
 
 ## Server side
