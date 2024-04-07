@@ -83,6 +83,18 @@ Fully responsive MERN project (restaurant with order and product management) ini
 
 ![create new product](https://images2.imgbox.com/fc/be/ufoFmfi1_o.jpg)
 
+## Client
+
+- this is a showing of order history
+
+![client - order history](https://images2.imgbox.com/83/05/PZMIquCq_o.jpg)
+
+### Order Details
+
+- selecting to see the details of a specific order 
+
+![order details](https://images2.imgbox.com/51/4e/5I05uNBW_o.jpg)
+
 # Setup
 
 ## Server side
