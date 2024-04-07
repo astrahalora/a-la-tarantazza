@@ -70,6 +70,12 @@ Fully responsive MERN project (restaurant with order and product management) ini
 
 ![admin](https://images2.imgbox.com/7d/90/AcE6P5R4_o.jpg)
 
+### Update
+
+- by clicking update, changing details is available and a save button is displayed 
+
+![add new product](https://images2.imgbox.com/63/3a/iCuuvDXS_o.jpg)
+
 # Setup
 
 ## Server side
