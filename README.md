@@ -28,6 +28,12 @@ Fully responsive MERN project (restaurant with order and product management) ini
 
 ![banner](https://images2.imgbox.com/f1/41/cwdKbO0J_o.jpg)
 
+## Menu
+
+- on hover dropdown menu featuring product types
+
+![menu](https://images2.imgbox.com/8d/46/5NuudE34_o.jpg)
+
 # Setup
 
 ## Server side
