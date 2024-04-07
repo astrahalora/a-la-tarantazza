@@ -34,6 +34,13 @@ Fully responsive MERN project (restaurant with order and product management) ini
 
 ![menu](https://images2.imgbox.com/8d/46/5NuudE34_o.jpg)
 
+## Products
+
+- product pages with filter by excluding allergen of choice and search by name
+- search performed through filtered products, not all, if allergen filter applied
+
+![products](https://images2.imgbox.com/13/81/zV7lsaoe_o.jpg)
+
 # Setup
 
 ## Server side
