@@ -39,6 +39,7 @@ Fully responsive MERN project (restaurant with order and product management) ini
 - product pages with filter by excluding allergen of choice and search by name
 - search performed through filtered products, not all, if allergen filter applied
 - can add to cart from this view if product is in stock
+- has button to access view of product details
 
 ![products](https://images2.imgbox.com/13/81/zV7lsaoe_o.jpg)
 
@@ -50,6 +51,14 @@ Fully responsive MERN project (restaurant with order and product management) ini
 - can add product to favorites
 
 ![product details](https://images2.imgbox.com/72/dc/LBqoCAog_o.jpg)
+
+## Favorites
+
+- favorites page offers a listing of all favorited products
+- each has a button to remove them from favorites
+- favorites can be sorted by name in ascending or descending order
+
+![favorites](https://images2.imgbox.com/75/8b/WrJFtu3u_o.jpg)
 
 # Setup
 
