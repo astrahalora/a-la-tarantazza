@@ -4,7 +4,8 @@ import { patchContent } from "../../../js/patchContent";
 import { deleteOneItem } from "../../../js/deleteOneItem";
 import { fetchProducts } from "../../../redux/productsSlice";
 import { productsUrl } from "../../../js/endpoints";
-import { removeAllFromCart } from "../../../redux/cartSlice";
+import { removeAllFromCart, adjustProduct } from "../../../redux/cartSlice";
+import { isProductInCart } from "../../../js/isProductInCart";
 import "./TableProduct.css";
 
 export default function TableProduct({ product }) {
@@ -14,26 +15,36 @@ export default function TableProduct({ product }) {
     const nameRef = useRef(), priceRef = useRef(), amountRef = useRef();
     const dispatch = useDispatch();
 
-    const removeFromCartWhenDeleted = (product, productsInCart) => {
-        const isProductInCart = productsInCart.some(item => item.name === product.name);
-        if (isProductInCart) {
-            dispatch(removeAllFromCart(product));
+    const removeFromCartWhenDeleted = () => {
+        if (isProductInCart(productsInCart, productObj)) {
+            dispatch(removeAllFromCart(productObj));
+        }
+    }
+
+    const adjustInCartWhenUpdated = (updatedProduct) => {
+        if (isProductInCart(productsInCart, productObj)) {
+            dispatch(adjustProduct(updatedProduct));
         }
     }
 
     const handleSave = () => {
-        patchContent(productsUrl, productObj._id, {
+        const updatedProduct = {
+            _id: productObj._id,
             name: nameRef.current.value,
             price: priceRef.current.value,
             amount: amountRef.current.value
-        })
-            .then(() => dispatch(fetchProducts()))
+        }
+        patchContent(productsUrl, productObj._id, updatedProduct)
+            .then(() => {
+                adjustInCartWhenUpdated(updatedProduct);
+                return dispatch(fetchProducts())
+            })
             .then(() => setUpdating(false));
     }
 
     const handleDelete = () => deleteOneItem(productsUrl, productObj._id)
         .then(() => {
-            removeFromCartWhenDeleted(productObj, productsInCart);
+            removeFromCartWhenDeleted(productObj);
             return dispatch(fetchProducts());
         });
 

@@ -46,6 +46,27 @@ export const cartSlice = createSlice({
             state.products = state.products.filter(item => item._id !== action.payload._id);
             localStorage.setItem("cart", JSON.stringify(state.products));
         },
+        adjustProduct: (state, action) => {
+            console.log(action.payload.name)
+            for (let i = 0; i < state.products.length; i++) {
+                if (state.products[i]._id === action.payload._id) {
+                    if (state.products[i].quantity > action.payload.amount) {
+                        state.products[i].quantity = parseInt(action.payload.amount);
+                    }
+                    if (state.products[i].name !== action.payload.name) {
+                        state.products[i].name = action.payload.name;
+                    }
+                    if (state.products[i].price !== action.payload.price) {
+                        state.products[i].price = parseFloat(action.payload.price).toFixed(2);
+                    }
+                    if(state.products[i].quantity === 0) {
+                        state.products = state.products.filter(item => item._id !== state.products[i]._id);
+                    }
+                    localStorage.setItem("cart", JSON.stringify(state.products));
+                    return;
+                }
+            }
+        },        
         clearCart: (state) => {
             state.products = [];
             localStorage.setItem("cart", JSON.stringify(state.products));
@@ -53,6 +74,6 @@ export const cartSlice = createSlice({
     }
 })
 
-export const { addProductToCart, removeProductFromCart, removeAllFromCart, clearCart } = cartSlice.actions;
+export const { addProductToCart, removeProductFromCart, removeAllFromCart, adjustProduct, clearCart } = cartSlice.actions;
 
 export default cartSlice.reducer;
