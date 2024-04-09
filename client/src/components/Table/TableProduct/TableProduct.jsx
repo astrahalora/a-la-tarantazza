@@ -1,28 +1,41 @@
 import { useState, useRef } from "react";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { patchContent } from "../../../js/patchContent";
 import { deleteOneItem } from "../../../js/deleteOneItem";
 import { fetchProducts } from "../../../redux/productsSlice";
 import { productsUrl } from "../../../js/endpoints";
+import { removeAllFromCart } from "../../../redux/cartSlice";
 import "./TableProduct.css";
 
 export default function TableProduct({ product }) {
     const productObj = product[0];
+    const productsInCart = useSelector(state => state.cart.products);
     const [updating, setUpdating] = useState(false);
     const nameRef = useRef(), priceRef = useRef(), amountRef = useRef();
     const dispatch = useDispatch();
 
+    const removeFromCartWhenDeleted = (product, productsInCart) => {
+        const isProductInCart = productsInCart.some(item => item.name === product.name);
+        if (isProductInCart) {
+            dispatch(removeAllFromCart(product));
+        }
+    }
+
     const handleSave = () => {
-        setUpdating(false);
         patchContent(productsUrl, productObj._id, {
             name: nameRef.current.value,
             price: priceRef.current.value,
             amount: amountRef.current.value
         })
-        .then(() => dispatch(fetchProducts()));
+            .then(() => dispatch(fetchProducts()))
+            .then(() => setUpdating(false));
     }
 
-    const handleDelete = () => deleteOneItem(productsUrl, productObj._id).then(() => dispatch(fetchProducts()));
+    const handleDelete = () => deleteOneItem(productsUrl, productObj._id)
+        .then(() => {
+            removeFromCartWhenDeleted(productObj, productsInCart);
+            return dispatch(fetchProducts());
+        });
 
     return (
         <tr className="table-product">
@@ -32,27 +45,27 @@ export default function TableProduct({ product }) {
             {updating ? (
                 <>
                     <td>
-                        <input 
+                        <input
                             autoFocus
                             type="text"
                             name="name"
                             defaultValue={productObj.name}
                             ref={nameRef}
-                            className="table-input" 
+                            className="table-input"
                         />
                     </td>
                     <td>
-                        <input 
+                        <input
                             autoFocus
                             type="text"
                             name="price"
                             defaultValue={productObj.price.toFixed(2)}
                             ref={priceRef}
-                            className="table-input" 
+                            className="table-input"
                         />
                     </td>
                     <td>
-                        <input 
+                        <input
                             autoFocus
                             type="text"
                             name="amount"
