@@ -29,7 +29,6 @@ export default function OrderDetails() {
     const shippingCost = calculateShippingCost(productsInCart, totalProductsCost);
     const discounts = calculateDiscountAmount(totalProductsCost, voucher);
     const totalCost = calculateTotalCost(totalProductsCost, shippingCost, discounts);
-    //TODO ordering state
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
@@ -61,7 +60,7 @@ export default function OrderDetails() {
         .then(() => {
             // Use map to create an array of promises
             const patchPromises = productsInCart.map((product) => {
-                return patchContent(productsUrl, product._id, {
+                return patchContent(productsUrl, product._id, {  
                     amount: matchToProductInStock(product, products).amount - product.quantity
                 });
             });

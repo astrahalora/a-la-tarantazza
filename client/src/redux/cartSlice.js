@@ -47,7 +47,6 @@ export const cartSlice = createSlice({
             localStorage.setItem("cart", JSON.stringify(state.products));
         },
         adjustProduct: (state, action) => {
-            console.log(action.payload.name)
             for (let i = 0; i < state.products.length; i++) {
                 if (state.products[i]._id === action.payload._id) {
                     if (state.products[i].quantity > action.payload.amount) {
