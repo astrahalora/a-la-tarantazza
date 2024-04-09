@@ -4,7 +4,7 @@ import { patchContent } from "../../../js/patchContent";
 import { deleteOneItem } from "../../../js/deleteOneItem";
 import { fetchProducts } from "../../../redux/productsSlice";
 import { productsUrl } from "../../../js/endpoints";
-import { removeAllFromCart, adjustProduct } from "../../../redux/cartSlice";
+import { removeAllFromCart, adjustProductInCart } from "../../../redux/cartSlice";
 import { isProductInCart } from "../../../js/isProductInCart";
 import "./TableProduct.css";
 
@@ -23,7 +23,7 @@ export default function TableProduct({ product }) {
 
     const adjustInCartWhenUpdated = (updatedProduct) => {
         if (isProductInCart(productsInCart, productObj)) {
-            dispatch(adjustProduct(updatedProduct));
+            dispatch(adjustProductInCart(updatedProduct));
         }
     }
 
