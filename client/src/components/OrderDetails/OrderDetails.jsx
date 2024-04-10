@@ -8,13 +8,12 @@ import { patchContent } from "../../js/patchContent";
 import { productsUrl, ordersUrl } from "../../js/endpoints";
 import { clearCart } from "../../redux/cartSlice";
 import { matchToProductInStock } from "../../js/matchToProductInStock";
+import { expectedVoucher, setLocalStorageVoucherValue } from "../../js/voucherUtils";
 import "./OrderDetails.css";
 import OrderForm from "./OrderForm/OrderForm";
 import Voucher from "./Voucher/Voucher";
 import Summary from "./Summary/Summary";
 import InfoMessage from "../InfoMessage/InfoMessage";
-
-const expectedVoucher = "CELEBRATE20";
 
 export default function OrderDetails() {
     const productsInCart = useSelector(state => state.cart.products);
@@ -33,10 +32,10 @@ export default function OrderDetails() {
 
     useEffect(() => {
         if(productsInCart.length > 0) {
-            localStorage.setItem("voucher", JSON.stringify(voucher));
+            setLocalStorageVoucherValue(voucher);
         } else {
             setVoucher("");
-            localStorage.setItem("voucher", JSON.stringify(""));
+            setLocalStorageVoucherValue("");
         }
     }, [voucher, productsInCart.length]);
 
@@ -74,7 +73,7 @@ export default function OrderDetails() {
         .then(() => {
             dispatch(clearCart());
             setVoucher("");
-            localStorage.setItem("voucher", JSON.stringify(""));
+            setLocalStorageVoucherValue("");
             
             return dispatch(fetchProducts());
         })
