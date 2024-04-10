@@ -106,6 +106,7 @@ Fully responsive MERN project (restaurant with order and product management) ini
 - can add a voucher 
 - has a form for client details 
 - order now button that places the order
+- if products become unavailable while shopping they will be grayed out and shown at the top of the product list
 
 ![cart](https://images2.imgbox.com/e9/62/ttmLfd6G_o.jpg)
 
