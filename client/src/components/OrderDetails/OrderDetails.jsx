@@ -5,9 +5,8 @@ import { calculateItemsCost, calculateDiscountAmount, calculateShippingCost, cal
 import { fetchProducts } from "../../redux/productsSlice";
 import { postContent } from "../../js/postContent";
 import { patchContent } from "../../js/patchContent";
-import { productsUrl } from "../../js/endpoints";
+import { productsUrl, ordersUrl } from "../../js/endpoints";
 import { clearCart } from "../../redux/cartSlice";
-import { ordersUrl } from "../../js/endpoints";
 import { matchToProductInStock } from "../../js/matchToProductInStock";
 import "./OrderDetails.css";
 import OrderForm from "./OrderForm/OrderForm";
@@ -79,13 +78,8 @@ export default function OrderDetails() {
             
             return dispatch(fetchProducts());
         })
-        .then(() => {
-            navigate("/order-complete");
-        })
-        .catch((error) => {
-            console.error('Error:', error);
-        });
-       
+        .then(() => navigate("/order-complete"))
+        .catch((error) => console.error('Error:', error));
     }
 
     const handleAddVoucher = (input) => {
