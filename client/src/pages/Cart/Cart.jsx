@@ -10,14 +10,12 @@ export default function Cart() {
     const products = useSelector(state => state.productList.products);
     const dispatch = useDispatch();
 
-    // Sort products by quantity, with products having quantity 0 appearing first
     const sortedProductsInCart = [...productsInCart].sort((a, b) => {
         const quantityA = getQuantityInCart(productsInCart, a);
         const quantityB = getQuantityInCart(productsInCart, b);
-        // Products with quantity 0 should appear first
+
         if (quantityA === 0 && quantityB !== 0) return -1;
         if (quantityA !== 0 && quantityB === 0) return 1;
-        // For products with non-zero quantities, maintain their original order
         return 0;
     });
 

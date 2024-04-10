@@ -14,7 +14,7 @@ import unavailableCart from "../../img/shopping_cart_unavailable.png";
 import "./ProductDetails.css";
 import Loading from "../Loading/Loading";
 import ErrorPage from "../Error/ErrorPage";
-import AddedProduct from "../../components/AddedProduct/AddedProduct";
+import InfoMessage from "../../components/InfoMessage/InfoMessage";
 
 export default function ProductDetails() {
     const detailsState = useSelector(state => state.product.details);
@@ -130,7 +130,7 @@ export default function ProductDetails() {
                 </div>
             ) : null}
             </>
-            <AddedProduct show={showAddedProduct} />
+            <InfoMessage show={showAddedProduct} message="Product Added to Cart" />
         </div>
     )
 }

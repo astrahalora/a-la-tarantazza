@@ -8,19 +8,19 @@ import { patchContent } from "../../js/patchContent";
 import { productsUrl } from "../../js/endpoints";
 import { clearCart } from "../../redux/cartSlice";
 import { ordersUrl } from "../../js/endpoints";
+import { matchToProductInStock } from "../../js/matchToProductInStock";
 import "./OrderDetails.css";
 import OrderForm from "./OrderForm/OrderForm";
 import Voucher from "./Voucher/Voucher";
 import Summary from "./Summary/Summary";
+import InfoMessage from "../InfoMessage/InfoMessage";
 
 const expectedVoucher = "CELEBRATE20";
-const matchToProductInStock = (productInCart, generalProducts) => {
-    return generalProducts.filter(product => product._id === productInCart._id)[0];
-}
 
 export default function OrderDetails() {
     const productsInCart = useSelector(state => state.cart.products);
     const products = useSelector(state => state.productList.products);
+    const [showRemovalMessage, setShowRemovalMessage] = useState(false);
     const [voucher, setVoucher] = useState(() => {
         const storedVoucher = localStorage.getItem("voucher");
         return storedVoucher ? JSON.parse(storedVoucher) : "";
@@ -45,6 +45,12 @@ export default function OrderDetails() {
         e.preventDefault();
 
         if(productsInCart.length === 0) return;
+        if(productsInCart.some(item => item.quantity === 0)) {
+            setShowRemovalMessage(true); 
+            return setTimeout(() => {
+                setShowRemovalMessage(false); 
+            }, 3000);
+        }
 
         const order = {
             client: {
@@ -58,14 +64,12 @@ export default function OrderDetails() {
 
         postContent(order, ordersUrl)
         .then(() => {
-            // Use map to create an array of promises
             const patchPromises = productsInCart.map((product) => {
                 return patchContent(productsUrl, product._id, {  
                     amount: matchToProductInStock(product, products).amount - product.quantity
                 });
             });
     
-            // Wait for all patch promises to resolve
             return Promise.all(patchPromises);
         })
         .then(() => {
@@ -73,7 +77,6 @@ export default function OrderDetails() {
             setVoucher("");
             localStorage.setItem("voucher", JSON.stringify(""));
             
-            // Fetch products and wait for it to complete before navigating
             return dispatch(fetchProducts());
         })
         .then(() => {
@@ -102,6 +105,7 @@ export default function OrderDetails() {
                 total={totalCost} />
             <Voucher addVoucher={handleAddVoucher} voucher={voucher}/>
             <OrderForm handleSubmit={handleSubmitForm} />
+            <InfoMessage show={showRemovalMessage} message="Remove Unavailable Products"/>
         </div>
     )
 }

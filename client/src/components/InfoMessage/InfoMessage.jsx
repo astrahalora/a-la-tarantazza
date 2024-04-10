@@ -1,7 +1,7 @@
 import { useWindowDimensions } from "../../js/useWindowDimensions";
-import "./AddedProduct.css";
+import "./InfoMessage.css";
 
-export default function AddedProduct({ show }) {
+export default function InfoMessage({ show, message }) {
     // Calculate the bottom and right positions as percentages -20px for margins
     const { width, height } = useWindowDimensions();
     const bottomPosition = (height - 20) / height * 100;
@@ -16,7 +16,7 @@ export default function AddedProduct({ show }) {
                     right: `${100 - rightPosition}vw`
                 }
             }>
-            <p>Product Added to Cart</p>
+            <p>{message}</p>
         </div>
     )
 }

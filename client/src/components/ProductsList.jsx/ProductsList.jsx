@@ -10,7 +10,7 @@ import ErrorPage from "../../pages/Error/ErrorPage";
 import Product from "../../components/Product/Product";
 import Filter from "../../components/Filter/Filter";
 import "./ProductsList.css";
-import AddedProduct from "../AddedProduct/AddedProduct";
+import InfoMessage from "../InfoMessage/InfoMessage";
 
 export default function ProductsList({ productType }) {
     const productsState = useSelector(state => state.productList);
@@ -77,7 +77,7 @@ export default function ProductsList({ productType }) {
                     />
                 ))}
             </div>
-            <AddedProduct show={showAddedProduct} />
+            <InfoMessage show={showAddedProduct} message="Product Added to Cart" />
         </section>
     );
 }
