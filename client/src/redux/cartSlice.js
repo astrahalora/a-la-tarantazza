@@ -58,9 +58,6 @@ export const cartSlice = createSlice({
                     if (state.products[i].price !== action.payload.price) {
                         state.products[i].price = parseFloat(action.payload.price).toFixed(2);
                     }
-                    // if(state.products[i].quantity === 0) {
-                    //     state.products = state.products.filter(item => item._id !== state.products[i]._id);
-                    // }
                     localStorage.setItem("cart", JSON.stringify(state.products));
                     return;
                 }
