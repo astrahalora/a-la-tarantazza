@@ -15,7 +15,7 @@ import Voucher from "./Voucher/Voucher";
 import Summary from "./Summary/Summary";
 import InfoMessage from "../InfoMessage/InfoMessage";
 
-export default function OrderDetails() {
+export default function OrderDetails( { handleLoading }) {
     const productsInCart = useSelector(state => state.cart.products);
     const products = useSelector(state => state.productList.products);
     const [showRemovalMessage, setShowRemovalMessage] = useState(false);
@@ -50,6 +50,7 @@ export default function OrderDetails() {
             }, 3000);
         }
 
+        handleLoading();
         const order = {
             client: {
                 name: nameInput.current.value,

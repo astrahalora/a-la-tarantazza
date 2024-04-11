@@ -1,13 +1,16 @@
+import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { addProductToCart, removeProductFromCart, removeAllFromCart } from "../../redux/cartSlice";
 import { getQuantityInCart } from "../../js/getQuantityInCart";
 import "./Cart.css";
 import CartProduct from "../../components/CartProduct/CartProduct";
 import OrderDetails from "../../components/OrderDetails/OrderDetails";
+import Loading from "../../pages/Loading/Loading";
 
 export default function Cart() {
     const productsInCart = useSelector(state => state.cart.products);
     const products = useSelector(state => state.productList.products);
+    const [loading, setLoading] = useState(false);
     const dispatch = useDispatch();
 
     const sortedProductsInCart = [...productsInCart].sort((a, b) => {
@@ -22,6 +25,8 @@ export default function Cart() {
     const matchToProductInStock = (productInCart) => {
         return products.filter(product => product._id === productInCart._id)[0];
     }
+
+    if(loading) return <Loading />
 
     return (
         <div className="cart-frame">
@@ -39,7 +44,7 @@ export default function Cart() {
                         <h3>No products in Cart</h3>
                     )}
                 </div>
-                <OrderDetails />
+                <OrderDetails handleLoading={() => setLoading(true)} />
             </div>
         </div>
     )
