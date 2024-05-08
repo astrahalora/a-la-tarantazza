@@ -7,6 +7,7 @@ import { isInFavorites } from "../../js/IsItemInFavorites";
 import { favoritesUrl } from "../../js/endpoints";
 import { postContent } from "../../js/postContent";
 import { deleteOneItem } from "../../js/deleteOneItem";
+import { productAmountGreaterThanProductQuantity } from "../../js/productAmountGreaterThanProductQuantity";
 import heartEmpty from "../../img/heart_empty.png";
 import heartFull from "../../img/heart_full.png";
 import cart from "../../img/shopping_cart.png";
@@ -35,16 +36,8 @@ export default function ProductDetails() {
     if(favoritesState.loading) return <Loading />;
     if(favoritesState.error) return <ErrorPage />;
 
-    const productAmountGreaterThanProductQuantity = () => {
-        const cartProduct = productsInCart.filter(item => item.name === productToDisplay.name);
-        if(cartProduct[0]) {
-            return productToDisplay.amount > cartProduct[0].quantity;
-        }
-        return true;
-    }
-
     const handleAddToCart = (product) => {
-        if(productAmountGreaterThanProductQuantity()) {
+        if(productAmountGreaterThanProductQuantity(productsInCart, productToDisplay)) {
             dispatch(addProductToCart(product));
             setShowAddedProduct(true); 
             setTimeout(() => {

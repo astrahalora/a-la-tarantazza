@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { addProductToCart, removeProductFromCart, removeAllFromCart } from "../../redux/cartSlice";
 import { getQuantityInCart } from "../../js/getQuantityInCart";
+import { matchToProductInStock } from "../../js/matchToProductInStock";
 import "./Cart.css";
 import CartProduct from "../../components/CartProduct/CartProduct";
 import OrderDetails from "../../components/OrderDetails/OrderDetails";
@@ -22,10 +23,6 @@ export default function Cart() {
         return 0;
     });
 
-    const matchToProductInStock = (productInCart) => {
-        return products.filter(product => product._id === productInCart._id)[0];
-    }
-
     if(loading) return <Loading />
 
     return (
@@ -36,7 +33,7 @@ export default function Cart() {
                     {sortedProductsInCart.length > 0 ? sortedProductsInCart.map((product, i) => (
                         <CartProduct key={i}
                             product={[product]}
-                            addProduct={() => dispatch(addProductToCart(matchToProductInStock(product)))}
+                            addProduct={() => dispatch(addProductToCart(matchToProductInStock(product, products)))}
                             removeProduct={() => dispatch(removeProductFromCart(product))}
                             removeAll={() => dispatch(removeAllFromCart(product))}
                             quantity={getQuantityInCart(productsInCart, product)}/>
