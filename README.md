@@ -13,12 +13,16 @@ Fully responsive MERN project (restaurant with order and product management) ini
 
 ![A La Tarantazza main page](https://images2.imgbox.com/8e/89/gj9EAKRf_o.jpg)
 
-# Technologies 
+# Technologies & Tools
 
 - React (frontend JavaScript library for building user interfaces based on components)
+- Redux (JavaScript library for managing and centralizing application state).
 - Node.js (backend JavaScript runtime environment)
 - Express.js (backend web application framework for building RESTful APIs with Node.js)
 - MongoDB (NoSQL database program)
+- Mongoose (MongoDB object modeling tool)
+- HTML (HyperText Markup Language)
+- JSX (XML-like extension to the JavaScript language syntax)
 - CSS (for styling)
 
 # Features
