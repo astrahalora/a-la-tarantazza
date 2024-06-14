@@ -15,6 +15,7 @@ Fully responsive MERN project (restaurant with order and product management) ini
 
 # Technologies & Tools
 
+- JavaScript (lightweight interpreted programming language)
 - React (frontend JavaScript library for building user interfaces based on components)
 - Redux (JavaScript library for managing and centralizing application state).
 - Node.js (backend JavaScript runtime environment)
